@@ -2114,8 +2114,7 @@ if (($id > 0 || !empty($ref)) || $projectidforalltimes > 0 || $allprojectforuser
 		$totalarray = array();
 		$totalarray['nbfield'] = 0;
 		//$imaxinloop = ($limit ? min($num, $limit) : $num);
-		foreach ($tasks as $task_time) {
-
+		foreach ($tasks as $task_time) { 
 			$invoiced = false;
 
 			if ($i >= $limit) {
