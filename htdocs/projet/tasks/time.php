@@ -2130,7 +2130,7 @@ if (($id > 0 || !empty($ref)) || $projectidforalltimes > 0 || $allprojectforuser
 			if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 				print '<td class="center nowraponall">';
 				if (($action == 'editline' || $action == 'splitline') && GETPOSTINT('lineid') == $task_time->rowid) {
-					print '<input type="hidden" name="lineid" value="' . GETPOSTINT('lineid') . '">';
+					print '<input type="hidden" name="lineid" value="' . GETPOSTINT('lineid') . '"xxxxxxxx#>';
 					print '<input type="submit" class="button buttongen smallpaddingimp margintoponlyshort marginbottomonlyshort button-save" name="save" value="'.$langs->trans("Save").'">';
 					print '<br>';
 					print '<input type="submit" class="button buttongen smallpaddingimp margintoponlyshort marginbottomonlyshort button-cancel" name="cancel" value="'.$langs->trans("Cancel").'">';
@@ -2156,7 +2156,17 @@ if (($id > 0 || !empty($ref)) || $projectidforalltimes > 0 || $allprojectforuser
 								$selected = 1;
 							}
 							print '&nbsp;';
-							print '<input id="cb' . $task_time->rowid . '" class="flat checkforselect marginleftonly" type="checkbox" name="toselect[]" value="' . $task_time->rowid . '"' . ($selected ? ' checked="checked"' : '') . '>';
+							// Disable select if task not billable or already invoiced
+							$disabled = (intval($task_time->billable) != 1 || $invoiced);
+							$ctrl = '<input '.($disabled ? 'disabled' : '').' id="cb' . $task_time->rowid . '" class="flat checkforselect marginleftonly" type="checkbox" name="toselect[]" value="' . $task_time->rowid . '"' . ($selected ? ' checked="checked"' : '') . '>';
+							if ($disabled) {
+								// If disabled, a dbl-click very close outside the control
+								// will re-enable it, so that user is not blocked if needed.
+								print '<span id="cbsp'. $task_time->rowid . '">'.$ctrl.'</span>';
+								print '<script>$("#cbsp' . $task_time->rowid . '").dblclick(()=>{ $("#cb' . $task_time->rowid . '").removeAttr("disabled") })</script>';
+							} else {
+								print $ctrl;
+							}
 						}
 					}
 				}
