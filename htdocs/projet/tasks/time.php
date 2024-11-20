@@ -2115,6 +2115,9 @@ if (($id > 0 || !empty($ref)) || $projectidforalltimes > 0 || $allprojectforuser
 		$totalarray['nbfield'] = 0;
 		//$imaxinloop = ($limit ? min($num, $limit) : $num);
 		foreach ($tasks as $task_time) {
+
+			$invoiced = false;
+
 			if ($i >= $limit) {
 				break;
 			}
@@ -2156,6 +2159,10 @@ if (($id > 0 || !empty($ref)) || $projectidforalltimes > 0 || $allprojectforuser
 								$selected = 1;
 							}
 							print '&nbsp;';
+
+							// Line is invoiced if it has an invoice_id
+							$invoiced = $task_time->invoice_id ? true : false;
+
 							// Disable select if task not billable or already invoiced
 							$disabled = (intval($task_time->billable) != 1 || $invoiced);
 							$ctrl = '<input '.($disabled ? 'disabled' : '').' id="cb' . $task_time->rowid . '" class="flat checkforselect marginleftonly" type="checkbox" name="toselect[]" value="' . $task_time->rowid . '"' . ($selected ? ' checked="checked"' : '') . '>';
@@ -2436,7 +2443,6 @@ if (($id > 0 || !empty($ref)) || $projectidforalltimes > 0 || $allprojectforuser
 			}
 
 			// Invoiced
-			$invoiced = false;
 			if (!empty($arrayfields['valuebilled']['checked'])) {
 				print '<td class="center">'; // invoice_id and invoice_line_id
 				if (!getDolGlobalString('PROJECT_HIDE_TASKS') && getDolGlobalString('PROJECT_BILL_TIME_SPENT')) {
