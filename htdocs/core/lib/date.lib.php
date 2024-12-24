@@ -1026,7 +1026,7 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
  * @param int $excludesunday Exclude sunday as non working day (-1=use setup, 0=no, 1=yes)
  * @param int $excludefriday Exclude friday as non working day (-1=use setup, 0=no, 1=yes)
  * @param int $excludemonday Exclude monday as non working day (-1=use setup, 0=no, 1=yes)
- * @return    int|array                        List of public holidays or error message string if error
+ * @return    string|array                        List of public holidays or error message string if error
  * @see num_between_day(), num_open_day()
  */
 function list_public_holiday($timestampStart, $timestampEnd, $country_code = '', $lastday = 0, $excludesaturday = -1, $excludesunday = -1, $excludefriday = -1, $excludemonday = -1)
