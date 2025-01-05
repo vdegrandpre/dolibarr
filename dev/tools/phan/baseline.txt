@@ -9,7 +9,7 @@
  */
 return [
     // # Issue statistics:
-    // PhanUndeclaredProperty : 560+ occurrences
+    // PhanUndeclaredProperty : 570+ occurrences
     // PhanPossiblyUndeclaredGlobalVariable : 310+ occurrences
     // PhanUndeclaredGlobalVariable : 280+ occurrences
     // PhanTypeMismatchArgumentProbablyReal : 200+ occurrences
