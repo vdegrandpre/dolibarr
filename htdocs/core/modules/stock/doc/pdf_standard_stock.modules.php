@@ -80,7 +80,7 @@ class pdf_standard_stock extends ModelePDFStock
 	public $postotalht;
 
 	/**
-	 * @var float
+	 * @var int
 	 */
 	public $tabTitleHeight;
 

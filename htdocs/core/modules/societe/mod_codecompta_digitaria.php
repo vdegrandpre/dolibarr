@@ -258,7 +258,7 @@ class mod_codecompta_digitaria extends ModeleAccountancyCode
 
 					if ($i <= 9) {
 						$a = 1;
-					} elseif ($i >= 10 && $i <= 99) {
+					} elseif ($i <= 99) {  // Also >= 10
 						$a = 2;
 					} else {  // ($i >= 100 && $i <= 999) {
 						$a = 3;

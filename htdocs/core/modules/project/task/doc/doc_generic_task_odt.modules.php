@@ -648,8 +648,8 @@ class doc_generic_task_odt extends ModelePDFTask
 								$soc->fetch($contact['socid']);
 								$contact['socname'] = $soc->name;
 							} else {
-								dol_syslog(get_class().'::'.__METHOD__.' Unexpected contact source:'.$contact['source'], LOG_ERR);
-								continue;
+								dol_syslog(get_class().'::'.__METHOD__.' Unexpected contact source:'.$contact['source'], LOG_WARNING);
+								$objectdetail = null;
 							}
 							$contact['fullname'] = is_object($objectdetail) ? $objectdetail->getFullName($outputlangs, 1) : null;
 
