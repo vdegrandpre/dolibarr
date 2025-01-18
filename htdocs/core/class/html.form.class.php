@@ -101,18 +101,18 @@ class Form
 	/**
 	 * Output key field for an editable field
 	 *
-	 * @param 	string 	$text 			Text of label or key to translate
-	 * @param 	string 	$htmlname 		Name of select field ('edit' prefix will be added)
-	 * @param 	string 	$preselected 	Value to show/edit (not used in this function)
-	 * @param 	object 	$object 		Object (on the page we show)
-	 * @param 	boolean $perm 			Permission to allow button to edit parameter. Set it to 0 to have a not edited field.
-	 * @param 	string 	$typeofdata 	Type of data ('string' by default, 'email', 'amount:99', 'numeric:99', 'text' or 'textarea:rows:cols', 'datepicker' ('day' do not work, don't know why), 'dayhour' or 'datehourpicker' 'checkbox:ckeditor:dolibarr_zzz:width:height:savemethod:1:rows:cols', 'select;xxx[:class]'...)
-	 * @param 	string 	$moreparam 		More param to add on a href URL.
-	 * @param 	int 	$fieldrequired 	1 if we want to show field as mandatory using the "fieldrequired" CSS.
-	 * @param 	int 	$notabletag 	1=Do not output table tags but output a ':', 2=Do not output table tags and no ':', 3=Do not output table tags but output a ' '
-	 * @param 	string 	$paramid 		Key of parameter for id ('id', 'socid')
-	 * @param 	string 	$help 			Tooltip help
-	 * @return  string                  HTML edit field
+	 * @param 	string		$text 			Text of label or key to translate
+	 * @param 	string		$htmlname 		Name of select field ('edit' prefix will be added)
+	 * @param 	string		$preselected 	Value to show/edit (not used in this function)
+	 * @param 	object		$object 		Object (on the page we show)
+	 * @param 	int<0,1>	$perm 			Permission to allow button to edit parameter. Set it to 0 to have a not edited field.
+	 * @param 	string	 	$typeofdata 	Type of data ('string' by default, 'email', 'amount:99', 'numeric:99', 'text' or 'textarea:rows:cols', 'datepicker' ('day' do not work, don't know why), 'dayhour' or 'datehourpicker' 'checkbox:ckeditor:dolibarr_zzz:width:height:savemethod:1:rows:cols', 'select;xxx[:class]'...)
+	 * @param 	string		$moreparam 		More param to add on a href URL.
+	 * @param 	int			$fieldrequired 	1 if we want to show field as mandatory using the "fieldrequired" CSS.
+	 * @param 	int<0,3>	$notabletag 	1=Do not output table tags but output a ':', 2=Do not output table tags and no ':', 3=Do not output table tags but output a ' '
+	 * @param 	string		$paramid 		Key of parameter for id ('id', 'socid')
+	 * @param 	string		$help 			Tooltip help
+	 * @return  string						HTML edit field
 	 */
 	public function editfieldkey($text, $htmlname, $preselected, $object, $perm, $typeofdata = 'string', $moreparam = '', $fieldrequired = 0, $notabletag = 0, $paramid = 'id', $help = '')
 	{
@@ -6065,7 +6065,7 @@ class Form
 	 * @param 	int 		$socid 				Id third party (-1=all, 0=only projects not linked to a third party, id=projects not linked or linked to third party id)
 	 * @param 	string 		$selected 			Id preselected project
 	 * @param 	string 		$htmlname 			Name of select field
-	 * @param 	int 		$discard_closed 	Discard closed projects (0=Keep,1=hide completely except $selected,2=Disable)
+	 * @param 	int<0,2>	$discard_closed 	Discard closed projects (0=Keep,1=hide completely except $selected,2=Disable)
 	 * @param 	int 		$maxlength 			Max length
 	 * @param 	int 		$forcefocus 		Force focus on field (works with javascript only)
 	 * @param 	int<0,1>	$nooutput 			No print is done. String is returned.
@@ -11722,10 +11722,10 @@ class Form
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
 
 	/**
-	* Load into cache list of invoice subtypes
-	*
-	* @return int             Nb of lines loaded, <0 if KO
-	*/
+	 * Load into cache list of invoice subtypes
+	 *
+	 * @return int             Nb of lines loaded, <0 if KO
+	 */
 	public function load_cache_invoice_subtype()
 	{
 		// phpcs:enable
@@ -11768,15 +11768,15 @@ class Form
 
 
 	/**
-	* Return list of invoice subtypes.
-	*
-	* @param int		$selected     	Id of invoice subtype to preselect by default
-	* @param string		$htmlname     	Select field name
-	* @param int<0,1>	$addempty     	Add an empty entry
-	* @param int<0,1>	$noinfoadmin  	0=Add admin info, 1=Disable admin info
-	* @param string $morecss       	Add more CSS on select tag
-	* @return string  				String for the HTML select component
-	*/
+	 * Return list of invoice subtypes.
+	 *
+	 * @param int		$selected		Id of invoice subtype to preselect by default
+	 * @param string	$htmlname		Select field name
+	 * @param int<0,1>	$addempty		Add an empty entry
+	 * @param int<0,1>	$noinfoadmin	0=Add admin info, 1=Disable admin info
+	 * @param string	$morecss		Add more CSS on select tag
+	 * @return string					String for the HTML select component
+	 */
 	public function getSelectInvoiceSubtype($selected = 0, $htmlname = 'subtypeid', $addempty = 0, $noinfoadmin = 0, $morecss = '')
 	{
 		global $langs, $user;
