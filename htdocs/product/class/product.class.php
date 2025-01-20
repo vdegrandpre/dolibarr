@@ -1438,6 +1438,9 @@ class Product extends CommonObject
 		$this->accountancy_code_sell_intra = trim($this->accountancy_code_sell_intra);
 		$this->accountancy_code_sell_export = trim($this->accountancy_code_sell_export);
 
+		if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING') && !empty($this->packaging)) {
+			$this->packaging = $this->packaging;
+		}
 
 		$this->db->begin();
 
@@ -1588,6 +1591,9 @@ class Product extends CommonObject
 			$sql .= ", fk_price_expression = ".($this->fk_price_expression != 0 ? (int) $this->fk_price_expression : 'NULL');
 			$sql .= ", fk_user_modif = ".($user->id > 0 ? $user->id : 'NULL');
 			$sql .= ", mandatory_period = ".($this->mandatory_period);
+			if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING') && !empty($this->packaging)) {
+				$sql .= ", packaging = ".($this->packaging);
+			}
 			// stock field is not here because it is a denormalized value from product_stock.
 			$sql .= " WHERE rowid = ".((int) $id);
 
@@ -2888,6 +2894,9 @@ class Product extends CommonObject
 		} else {
 			$sql .= " ppe.accountancy_code_buy, ppe.accountancy_code_buy_intra, ppe.accountancy_code_buy_export, ppe.accountancy_code_sell, ppe.accountancy_code_sell_intra, ppe.accountancy_code_sell_export,";
 		}
+		if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING')) {
+			$sql .= " p.packaging,";
+		}
 
 		// For MultiCompany
 		// PMP per entity & Stocks Sharings stock_reel includes only stocks shared with this entity
@@ -3066,6 +3075,10 @@ class Product extends CommonObject
 				$this->last_main_doc = $obj->last_main_doc;
 
 				$this->mandatory_period = $obj->mandatory_period;
+
+				if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING')) {
+					$this->packaging = $obj->packaging;
+				}
 
 				$this->db->free($resql);
 
