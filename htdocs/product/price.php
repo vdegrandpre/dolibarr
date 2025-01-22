@@ -283,6 +283,11 @@ if (empty($reshook)) {
 		$psq = empty($newpsq) ? 0 : $newpsq;
 		$maxpricesupplier = $object->min_recommended_price();
 
+		// Packaging / Conditionnement
+		if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING')) {
+			$packaging = GETPOST('packaging');
+		}
+
 		if (isModEnabled('dynamicprices')) {
 			$object->fk_price_expression = empty($eid) ? 0 : $eid; //0 discards expression
 
@@ -480,6 +485,11 @@ if (empty($reshook)) {
 
 		if (!$error) {
 			$db->begin();
+
+			// Packaging / Conditionnement
+			if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING')) {
+				$object->packaging = $packaging;
+			}
 
 			foreach ($pricestoupdate as $key => $val) {
 				$newprice = $val['price'];
@@ -1421,6 +1431,13 @@ if (getDolGlobalString('PRODUIT_MULTIPRICES') || getDolGlobalString('PRODUIT_CUS
 	}
 	print '</td></tr>';
 
+	// Packaging / Conditionnement
+	if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING')) {
+		print '<tr class="field_price_label"><td>'.$form->textwithpicto($langs->trans("PackagingForThisProduct"), $langs->trans("PackagingForThisProductSellDesc")).'</td><td>';
+		print $object->packaging;
+		print '</td></tr>';
+	}
+
 	// Price Label
 	print '<tr class="field_price_label"><td>'.$langs->trans("PriceLabel").'</td><td>';
 	print $object->price_label;
@@ -1742,6 +1759,17 @@ if (($action == 'edit_price' || $action == 'edit_level_price') && $object->getRi
 		}
 		print '</td>';
 		print '</tr>';
+
+		// Packaging / Conditionnement
+		if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING')) {
+			print '<tr><td>';
+			print $form->textwithpicto($langs->trans("PackagingForThisProduct"), $langs->trans("PackagingForThisProductSellDesc"));
+			print '</td><td>';
+			$packaging = $object->packaging;
+			print '<input class="flat" name="packaging" size="5" value="'.$packaging.'">';
+			print '</td>';
+			print '</tr>';
+		}
 
 		// Price Label
 		print '<tr><td>';
