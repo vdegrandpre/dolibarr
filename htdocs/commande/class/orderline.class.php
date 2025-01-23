@@ -176,7 +176,7 @@ class OrderLine extends CommonOrderLine
 		$sql .= ' p.ref as product_ref, p.label as product_label, p.description as product_desc, p.tobatch as product_tobatch,';
 		$sql .= ' cd.date_start, cd.date_end, cd.vat_src_code';
 		if (getDolGlobalInt('PRODUCT_USE_CUSTOMER_PACKAGING')) {
-			$sql .= ', p.packaging'; 
+			$sql .= ', p.packaging';
 		}
 		$sql .= ' FROM '.MAIN_DB_PREFIX.'commandedet as cd';
 		$sql .= ' LEFT JOIN '.MAIN_DB_PREFIX.'product as p ON cd.fk_product = p.rowid';
