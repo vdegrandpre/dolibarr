@@ -1442,10 +1442,6 @@ class Product extends CommonObject
 		$this->accountancy_code_sell_intra = trim($this->accountancy_code_sell_intra);
 		$this->accountancy_code_sell_export = trim($this->accountancy_code_sell_export);
 
-		if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING') && !empty($this->packaging)) {
-			$this->packaging = $this->packaging;
-		}
-
 		$this->db->begin();
 
 		$result = 0;
