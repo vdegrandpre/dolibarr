@@ -486,7 +486,7 @@ if (empty($reshook)) {
 
 			// Packaging / Conditionnement
 			if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING')) {
-				$object->packaging = $packaging;
+				$object->packaging = (double) $packaging;
 			}
 
 			foreach ($pricestoupdate as $key => $val) {
