@@ -1302,7 +1302,6 @@ if (empty($reshook)) {
 	$autocopy = 'MAIN_MAIL_AUTOCOPY_PRODUCT_TO';
 	$trackid = 'prod'.$object->id;
 	include DOL_DOCUMENT_ROOT.'/core/actions_sendmails.inc.php';
-
 }
 
 
@@ -3217,7 +3216,6 @@ if ($action != 'create' && $action != 'edit' && $action != 'delete') {
 	$trackid = 'prod' . $object->id;
 
 	include DOL_DOCUMENT_ROOT.'/core/tpl/card_presend.tpl.php';
-
 }
 
 // End of page
