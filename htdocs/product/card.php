@@ -3211,10 +3211,10 @@ if ($action != 'create' && $action != 'edit' && $action != 'delete') {
 	print '</div></div>';
 
 	// Presend form
-	$modelmail = 'product_send'; // Modèle d'e-mail pour les produits
-	$defaulttopic = $object->label; // Sujet par défaut
-	$diroutput = $conf->product->multidir_output[$object->entity]; // Répertoire de sortie
-	$trackid = 'prod' . $object->id; // ID de suivi
+	$modelmail = 'product_send';
+	$defaulttopic = $object->label;
+	$diroutput = $conf->product->multidir_output[$object->entity];
+	$trackid = 'prod' . $object->id;
 
 	include DOL_DOCUMENT_ROOT.'/core/tpl/card_presend.tpl.php';
 
