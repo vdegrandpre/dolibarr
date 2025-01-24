@@ -115,6 +115,11 @@ if ($action == 'presend') {
 	}
 	if ($forcebuilddoc) {    // If there is no default value for supplier invoice, we do not generate file, even if modelpdf was set by a manual generation
 		if ((!$file || !is_readable($file)) && method_exists($object, 'generateDocument')) {
+
+			$hidedetails = $hidedetails?$hidedetails:'';
+			$hidedesc = $hidedetails?$hidedetails:'';
+			$hideref = $hidedetails?$hidedetails:'';
+
 			$result = $object->generateDocument(GETPOST('model') ? GETPOST('model') : $object->model_pdf, $outputlangs, $hidedetails, $hidedesc, $hideref);
 			if ($result < 0) {
 				dol_print_error($db, $object->error, $object->errors);
