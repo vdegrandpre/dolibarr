@@ -593,7 +593,7 @@ function project_admin_prepare_head()
  * @param   int         $projectidfortotallink  0 or Id of project to use on total line (link to see all time consumed for project)
  * @param   string      $dummy					Not used.
  * @param   int         $showbilltime           Add the column 'TimeToBill' and 'TimeBilled'
- * @param   array<string,null|int|float|string>	$arrayfields	Array with displayed column information
+ * @param   array<string, array<string, int|string>>	$arrayfields	Array with displayed column information
  * @param   string[]    $arrayofselected        Array with selected fields
  * @return	int									Nb of tasks shown
  */
