@@ -3,7 +3,7 @@
  * Copyright (C) 2022	    Charlene Benke           <charlene@patas-monkey.com>
  * Copyright (C) 2023       Maxime Nicolas          <maxime@oarces.com>
  * Copyright (C) 2023       Benjamin GREMBI         <benjamin@oarces.com>
- * Copyright (C) 2024		Frédéric France			<frederic.france@free.fr>
+ * Copyright (C) 2024-2025  Frédéric France			<frederic.france@free.fr>
  * Copyright (C) 2024		MDW						<mdeweerd@users.noreply.github.com>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -30,6 +30,14 @@
  * $diroutput
  * $arrayoffamiliestoexclude=array('system', 'mycompany', 'object', 'objectamount', 'date', 'user', ...);
  * $file
+ */
+/**
+ * @var int<0,1> $diroutput
+ * @var string $defaulttopic
+ * @var string $defaulttopiclang
+ * @var string[] $arrayoffamiliestoexclude
+ * @var string $file
+ * @var CommonObject $object
  */
 '
 @phan-var-force int<0,1> $diroutput

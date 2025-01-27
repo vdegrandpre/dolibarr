@@ -15007,24 +15007,6 @@ parameters:
 			path: ../../../htdocs/core/tpl/card_presend.tpl.php
 
 		-
-			message: '#^Variable \$defaulttopic might not be defined\.$#'
-			identifier: variable.undefined
-			count: 2
-			path: ../../../htdocs/core/tpl/card_presend.tpl.php
-
-		-
-			message: '#^Variable \$diroutput might not be defined\.$#'
-			identifier: variable.undefined
-			count: 4
-			path: ../../../htdocs/core/tpl/card_presend.tpl.php
-
-		-
-			message: '#^Variable \$file might not be defined\.$#'
-			identifier: variable.undefined
-			count: 2
-			path: ../../../htdocs/core/tpl/card_presend.tpl.php
-
-		-
 			message: '#^Variable \$hidedesc might not be defined\.$#'
 			identifier: variable.undefined
 			count: 1
@@ -15064,12 +15046,6 @@ parameters:
 			message: '#^Variable \$newlang in empty\(\) always exists and is always falsy\.$#'
 			identifier: empty.variable
 			count: 1
-			path: ../../../htdocs/core/tpl/card_presend.tpl.php
-
-		-
-			message: '#^Variable \$object might not be defined\.$#'
-			identifier: variable.undefined
-			count: 36
 			path: ../../../htdocs/core/tpl/card_presend.tpl.php
 
 		-
