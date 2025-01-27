@@ -1582,7 +1582,6 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 		if (isModEnabled('prelevement')) {
 			print_liste_field_titre("RUM");
 			print_liste_field_titre("DateRUM");
-			print_liste_field_titre("WithdrawMode");
 		}
 		print_liste_field_titre("Default", '', '', '', '', '', '', '', 'center ');
 		if (!getDolGlobalInt('SOCIETE_DISABLE_BANKACCOUNT') && getDolGlobalInt("SOCIETE_RIB_ALLOW_ONLINESIGN")) {
@@ -1678,11 +1677,10 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 				// RUM
 				//print '<td>'.$prelevement->buildRumNumber($object->code_client, $rib->datec, $rib->id).'</td>';
 				print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($rib->rum).'">'.dol_escape_htmltag($rib->rum).'</td>';
+				print '<br><span class="opacitymedium">'.dol_escape_htmltag($rib->frstrecur).'</span>';	// FRST or RCUR
 
+				// Date
 				print '<td>'.dol_print_date($rib->date_rum, 'day').'</td>';
-
-				// FRST or RCUR
-				print '<td>'.dol_escape_htmltag($rib->frstrecur).'</td>';
 			}
 
 			// Default
@@ -1722,7 +1720,12 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 					$modelselected = getDolGlobalString('BANKADDON_PDF');
 				}
 
-				$out .= $form->selectarray('modelrib'.$rib->id, $modellist, $modelselected, 1, 0, 0, '', 0, 0, 0, '', 'minwidth100 maxwidth125');
+				$morecss = 'maxwidth125';
+				if ($conf->browser->layout == 'phone') {
+					$morecss = 'maxwidth100';
+				}
+
+				$out .= $form->selectarray('modelrib'.$rib->id, $modellist, $modelselected, 1, 0, 0, '', 0, 0, 0, '', 'minwidth100 '.$morecss);
 				$out .= ajax_combobox('modelrib'.$rib->id);
 
 				// Language code (if multilang)
@@ -1730,14 +1733,10 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 					include_once DOL_DOCUMENT_ROOT.'/core/class/html.formadmin.class.php';
 					$formadmin = new FormAdmin($db);
 					$defaultlang = $langs->getDefaultLang();
-					$morecss = 'maxwidth150';
-					if ($conf->browser->layout == 'phone') {
-						$morecss = 'maxwidth100';
-					}
 					$out .= $formadmin->select_language($defaultlang, 'lang_idrib'.$rib->id, 0, array(), 0, 0, 0, $morecss);
 				}
 				// Button
-				$out .= '<input class="button buttongen reposition nomargintop nomarginbottom" id="'.$forname.'_generatebutton" name="'.$forname.'_generatebutton"';
+				$out .= '<input class="button buttongen reposition nomargintop nomarginbottom '.$morecss.'" id="'.$forname.'_generatebutton" name="'.$forname.'_generatebutton"';
 				$out .= ' type="submit" value="'.$buttonlabel.'"';
 				$out .= '>';
 				$out .= '</form>';
@@ -1846,15 +1845,10 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 			if (isModEnabled('prelevement')) {
 				// RUM
 				print '<td>';
-				//var_dump($src);
 				print '</td>';
+
 				// Date
 				print '<td>';
-				//var_dump($src);
-				print '</td>';
-				// Mode mandate
-				print '<td>';
-				//var_dump($src);
 				print '</td>';
 			}
 
@@ -1900,7 +1894,7 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 		if ($nbremote == 0 && $nblocal == 0) {
 			$colspan = 10;
 			if (isModEnabled('prelevement')) {
-				$colspan += 3;
+				$colspan += 2;
 			}
 			if (!getDolGlobalInt('SOCIETE_DISABLE_BANKACCOUNT') && getDolGlobalInt("SOCIETE_RIB_ALLOW_ONLINESIGN")) {
 				$colspan++;
@@ -2125,6 +2119,7 @@ if ($socid && $action == 'editcard' && $permissiontoaddupdatepaymentinformation)
 
 	print '<br>';
 
+	print '<div class="div-table-responsive-no-min">';
 	print '<table class="border centpercent">';
 
 	print '<tr><td class="titlefieldcreate fieldrequired">'.$langs->trans("Label").'</td>';
@@ -2150,6 +2145,7 @@ if ($socid && $action == 'editcard' && $permissiontoaddupdatepaymentinformation)
 
 	print '</table>';
 	print '</div>';
+	print '</div>';
 
 	print dol_get_fiche_end();
 
@@ -2171,6 +2167,7 @@ if ($socid && $action == 'create' && $permissiontoaddupdatepaymentinformation) {
 
 	print '<br>';
 
+	print '<div class="div-table-responsive-no-min">';
 	print '<table class="border centpercent">';
 
 	print '<tr><td class="titlefieldcreate fieldrequired">'.$langs->trans("Label").'</td>';
@@ -2247,10 +2244,12 @@ if ($socid && $action == 'create' && $permissiontoaddupdatepaymentinformation) {
 	print "</textarea></td></tr>";
 
 	print '</table>';
+	print '</div>';
 
 	if (isModEnabled('prelevement')) {
 		print '<br>';
 
+		print '<div class="div-table-responsive-no-min">';
 		print '<table class="border centpercent">';
 
 		// RUM
@@ -2271,6 +2270,7 @@ if ($socid && $action == 'create' && $permissiontoaddupdatepaymentinformation) {
 		print '<td><input class="minwidth300" type="text" name="stripe_card_ref" value="'.GETPOST('stripe_card_ref', 'alpha').'"></td></tr>';
 
 		print '</table>';
+		print '</div>';
 	}
 
 	print '</div>';
@@ -2296,6 +2296,7 @@ if ($socid && $action == 'createcard' && $permissiontoaddupdatepaymentinformatio
 
 	print '<br>';
 
+	print '<div class="div-table-responsive-no-min">';
 	print '<table class="border centpercent">';
 
 	print '<tr><td class="titlefieldcreate fieldrequired">'.$langs->trans("Label").'</td>';
@@ -2320,6 +2321,7 @@ if ($socid && $action == 'createcard' && $permissiontoaddupdatepaymentinformatio
 	print '<td><input class="minwidth300" type="text" name="stripe_card_ref" value="'.GETPOST('stripe_card_ref', 'alpha').'"></td></tr>';
 
 	print '</table>';
+	print '</div>';
 
 	print '</div>';
 
