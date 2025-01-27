@@ -185,4 +185,3 @@ $documentation->showSidebar(); ?>
 <?php
 // Output close body + html
 $documentation->docFooter();
-?>
