@@ -5581,12 +5581,6 @@ parameters:
 			path: ../../../htdocs/compta/facture/class/facture.class.php
 
 		-
-			message: '#^Parameter \#2 \$alreadypaid of method CommonInvoice\:\:getLibStatut\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/compta/facture/class/facture.class.php
-
-		-
 			message: '#^Parameter \#4 \$txtva of method Facture\:\:addline\(\) expects float, string given\.$#'
 			identifier: argument.type
 			count: 1
@@ -18374,12 +18368,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#15 \$pu_devise of function calcul_price_total expects float, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/fourn/class/fournisseur.facture.class.php
-
-		-
-			message: '#^Parameter \#2 \$alreadypaid of method CommonInvoice\:\:getLibStatut\(\) expects int, float given\.$#'
 			identifier: argument.type
 			count: 1
 			path: ../../../htdocs/fourn/class/fournisseur.facture.class.php
