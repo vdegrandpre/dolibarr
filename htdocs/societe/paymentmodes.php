@@ -1575,7 +1575,7 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 		print '<tr class="liste_titre">';
 		print_liste_field_titre("Label");
 		print_liste_field_titre($form->textwithpicto($langs->trans('ExternalSystemID'), $langs->trans("IDOfPaymentInAnExternalSystem")));		// external system ID
-		print_liste_field_titre("Bank");
+		//print_liste_field_titre("Bank");
 		print_liste_field_titre("RIB");
 		print_liste_field_titre("IBAN");
 		print_liste_field_titre("BIC");
@@ -1603,7 +1603,10 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 
 			print '<tr class="oddeven">';
 			// Label
-			print '<td class="tdoverflowmax150" title="'.dol_escape_htmltag($rib->label).'">'.dol_escape_htmltag($rib->label).'</td>';
+			print '<td class="tdoverflowmax150" title="'.dolPrintHTMLForAttribute($rib->label).'">'.dolPrintHTML($rib->label);
+			print '<span class="opacitymedium">'.dolPrintHTML($rib->bank).'</span>';
+			print '</td>';
+
 			// External system ID
 			print '<td class="tdoverflowmax150" title="'.dol_escape_htmltag($rib->stripe_card_ref.(empty($rib->stripe_account) ? '' : ' - '.$rib->stripe_account)).'">';
 			if (!empty($rib->stripe_card_ref) && !empty($rib->ext_payment_site)) {
@@ -1623,8 +1626,10 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 			}
 			print dol_escape_htmltag($rib->stripe_card_ref);
 			print '</td>';
+
 			// Bank name
-			print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($rib->bank).'">'.dol_escape_htmltag($rib->bank).'</td>';
+			//print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($rib->bank).'">'.dol_escape_htmltag($rib->bank).'</td>';
+
 			// Account number
 			$string = '';
 			foreach ($rib->getFieldsToShow() as $val) {
@@ -1645,15 +1650,16 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 				//}
 				if (!empty($rib->label) && $rib->number) {
 					if (!checkBanForAccount($rib)) {
-						$string .= ' '.img_picto($langs->trans("ValueIsNotValid"), 'warning');
+						$string .= img_picto($langs->trans("ValueIsNotValid"), 'warning', 'class="pictofixedwidth"').$string;
 					} else {
-						$string .= ' '.img_picto($langs->trans("ValueIsValid"), 'info');
+						$string .= img_picto($langs->trans("ValueIsValid"), 'info', 'class="pictofixedwidth"').$string;
 					}
 				}
 			}  // EndFor $rib_list as $rib
 			print '<td class="tdoverflowmax150" title="'.dol_escape_htmltag($string).'">';
 			print $string;
 			print '</td>';
+
 			// IBAN
 			print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($rib->iban).'">';
 			if (!empty($rib->iban)) {
