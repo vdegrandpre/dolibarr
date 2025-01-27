@@ -1743,7 +1743,7 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 					$out .= $formadmin->select_language($defaultlang, 'lang_idrib'.$rib->id, 0, array(), 0, 0, 0, $morecss);
 				}
 				// Button
-				$out .= '<input class="button buttongen reposition nomargintop nomarginbottom '.$morecss.'" id="'.$forname.'_generatebutton" name="'.$forname.'_generatebutton"';
+				$out .= '<input class="button buttongen reposition nomargintop nomarginbottom small '.$morecss.'" id="'.$forname.'_generatebutton" name="'.$forname.'_generatebutton"';
 				$out .= ' type="submit" value="'.$buttonlabel.'"';
 				$out .= '>';
 				$out .= '</form>';
