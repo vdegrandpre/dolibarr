@@ -146,7 +146,7 @@ $documentation->showSidebar(); ?>
 							if (!empty($iconData[2])) {
 								$class.= ' fa-'.$iconData[2];
 							} else {
-								$class.= ' fa-'.$iconData[0]??'';
+								$class.= ' fa-'.$iconData[0];
 							}
 
 							if (in_array($class, $alreadyDisplay)) {
