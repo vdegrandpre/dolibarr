@@ -144,7 +144,7 @@ $documentation->showSidebar(); ?>
 						foreach ($fontAwesomeIcons as $iconData) {
 							$class= $iconData[1]??'fa';
 							if (!empty($iconData[2])) {
-								$class.= ' fa-'.$iconData[2]??'';
+								$class.= ' fa-'.$iconData[2];
 							} else {
 								$class.= ' fa-'.$iconData[0]??'';
 							}
