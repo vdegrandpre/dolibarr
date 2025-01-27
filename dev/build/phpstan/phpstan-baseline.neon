@@ -13777,30 +13777,6 @@ parameters:
 			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
 
 		-
-			message: '#^Property pdf_tcpdflabel\:\:\$_align2d has no type specified\.$#'
-			identifier: missingType.property
-			count: 1
-			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
-
-		-
-			message: '#^Property pdf_tcpdflabel\:\:\$_style1d has no type specified\.$#'
-			identifier: missingType.property
-			count: 1
-			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
-
-		-
-			message: '#^Property pdf_tcpdflabel\:\:\$_style2d has no type specified\.$#'
-			identifier: missingType.property
-			count: 1
-			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
-
-		-
-			message: '#^Property pdf_tcpdflabel\:\:\$_xres has no type specified\.$#'
-			identifier: missingType.property
-			count: 1
-			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
-
-		-
 			message: '#^Parameter \#1 \$object of method CommonDocGenerator\:\:get_substitutionarray_each_var_object\(\) expects array\<string, CommonObject\|float\|int\|string\>, Product given\.$#'
 			identifier: argument.type
 			count: 1
