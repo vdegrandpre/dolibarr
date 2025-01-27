@@ -160,12 +160,12 @@ class Conf extends stdClass
 	public $entities = array();
 
 	/**
-	 * @var int Set if we force param dol_hide_topmenu into login url
+	 * @var int<0,1> Set if we force param dol_hide_topmenu into login url
 	 */
 	public $dol_hide_topmenu;
 
 	/**
-	 * @var int Set if we force param dol_hide_leftmenu into login url
+	 * @var int<0,1> Set if we force param dol_hide_leftmenu into login url
 	 */
 	public $dol_hide_leftmenu;
 
@@ -1247,10 +1247,10 @@ class Conf extends stdClass
 
 			// For modules that want to disable top or left menu
 			if (!empty($this->global->MAIN_HIDE_TOP_MENU)) {
-				$this->dol_hide_topmenu = getDolGlobalInt('MAIN_HIDE_TOP_MENU');
+				$this->dol_hide_topmenu = (int) (bool) getDolGlobalInt('MAIN_HIDE_TOP_MENU');
 			}
 			if (!empty($this->global->MAIN_HIDE_LEFT_MENU)) {
-				$this->dol_hide_leftmenu = getDolGlobalInt('MAIN_HIDE_LEFT_MENU');
+				$this->dol_hide_leftmenu = (int) (bool) getDolGlobalInt('MAIN_HIDE_LEFT_MENU');
 			}
 
 			if (empty($this->global->MAIN_SIZE_SHORTLIST_LIMIT)) {
