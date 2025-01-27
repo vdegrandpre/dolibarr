@@ -62,6 +62,16 @@ if (isModEnabled('accounting')) {
  * @var User $user
  */
 
+// $moreparam is used, but it is unclear how it is set, keeping the variable and ensuring it exists.
+// $countrynotdefined is used, but it is unclear how it is set.
+'
+@phan-var-force ?string $moreparam
+@phan-var-force ?string $countrynotdefined
+';
+if (!isset($moreparam)) {
+	$moreparam = null;
+}
+
 // Load translation files required by page
 $langs->loadLangs(array('companies', 'commercial', 'banks', 'bills', 'trips', 'holiday', 'salaries'));
 
