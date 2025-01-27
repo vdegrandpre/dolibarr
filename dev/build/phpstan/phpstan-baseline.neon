@@ -11965,12 +11965,6 @@ parameters:
 			path: ../../../htdocs/core/modules/bank/doc/pdf_ban.modules.php
 
 		-
-			message: '#^Parameter \#3 \$tab_height of method pdf_ban\:\:_tableau\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/bank/doc/pdf_ban.modules.php
-
-		-
 			message: '#^Call to function is_object\(\) with object will always evaluate to true\.$#'
 			identifier: function.alreadyNarrowedType
 			count: 1
@@ -11980,18 +11974,6 @@ parameters:
 			message: '#^Loose comparison using \=\= between 1 and 1 will always evaluate to true\.$#'
 			identifier: equal.alwaysTrue
 			count: 1
-			path: ../../../htdocs/core/modules/bank/doc/pdf_sepamandate.modules.php
-
-		-
-			message: '#^Parameter \#3 \$posy of method pdf_sepamandate\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/bank/doc/pdf_sepamandate.modules.php
-
-		-
-			message: '#^Parameter \#3 \$tab_height of method pdf_sepamandate\:\:_tableau\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
 			path: ../../../htdocs/core/modules/bank/doc/pdf_sepamandate.modules.php
 
 		-
@@ -12071,18 +12053,6 @@ parameters:
 			identifier: argument.type
 			count: 2
 			path: ../../../htdocs/core/modules/commande/doc/doc_generic_order_odt.modules.php
-
-		-
-			message: '#^Parameter \#3 \$posy of method pdf_einstein\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/commande/doc/pdf_einstein.modules.php
-
-		-
-			message: '#^Parameter \#4 \$posy of method pdf_einstein\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/commande/doc/pdf_einstein.modules.php
 
 		-
 			message: '#^Property Commande\:\:\$availability \(string\) in isset\(\) is not nullable\.$#'
@@ -12235,12 +12205,6 @@ parameters:
 			path: ../../../htdocs/core/modules/contract/doc/doc_generic_contract_odt.modules.php
 
 		-
-			message: '#^Parameter \#3 \$tab_height of method pdf_strato\:\:tabSignature\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/contract/doc/pdf_strato.modules.php
-
-		-
 			message: '#^Ternary operator condition is always false\.$#'
 			identifier: ternary.alwaysFalse
 			count: 1
@@ -12249,12 +12213,6 @@ parameters:
 		-
 			message: '#^Call to function is_object\(\) with object will always evaluate to true\.$#'
 			identifier: function.alreadyNarrowedType
-			count: 1
-			path: ../../../htdocs/core/modules/delivery/doc/pdf_storm.modules.php
-
-		-
-			message: '#^Parameter \#3 \$posy of method pdf_storm\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
 			count: 1
 			path: ../../../htdocs/core/modules/delivery/doc/pdf_storm.modules.php
 
@@ -12307,12 +12265,6 @@ parameters:
 			path: ../../../htdocs/core/modules/delivery/doc/pdf_typhon.modules.php
 
 		-
-			message: '#^Parameter \#3 \$posy of method pdf_typhon\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/delivery/doc/pdf_typhon.modules.php
-
-		-
 			message: '#^Call to function is_object\(\) with object will always evaluate to true\.$#'
 			identifier: function.alreadyNarrowedType
 			count: 1
@@ -12352,12 +12304,6 @@ parameters:
 			message: '#^Parameter \#4 \$columnText of method CommonDocGenerator\:\:printStdColumnContent\(\) expects string, float\|int\<min, \-1\>\|int\<1, max\> given\.$#'
 			identifier: argument.type
 			count: 2
-			path: ../../../htdocs/core/modules/expedition/doc/pdf_espadon.modules.php
-
-		-
-			message: '#^Parameter \#4 \$posy of method pdf_espadon\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
 			path: ../../../htdocs/core/modules/expedition/doc/pdf_espadon.modules.php
 
 		-
@@ -12433,28 +12379,10 @@ parameters:
 			path: ../../../htdocs/core/modules/expedition/doc/pdf_merou.modules.php
 
 		-
-			message: '#^Parameter \#4 \$posy of method pdf_rouget\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/expedition/doc/pdf_rouget.modules.php
-
-		-
 			message: '#^Ternary operator condition is always false\.$#'
 			identifier: ternary.alwaysFalse
 			count: 1
 			path: ../../../htdocs/core/modules/expedition/doc/pdf_rouget.modules.php
-
-		-
-			message: '#^Parameter \#3 \$posy of method pdf_standard_expensereport\:\:tablePayments\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/expensereport/doc/pdf_standard_expensereport.modules.php
-
-		-
-			message: '#^Parameter \#3 \$tab_height of method pdf_standard_expensereport\:\:_tableau\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 6
-			path: ../../../htdocs/core/modules/expensereport/doc/pdf_standard_expensereport.modules.php
 
 		-
 			message: '#^Ternary operator condition is always false\.$#'
@@ -12511,24 +12439,6 @@ parameters:
 			path: ../../../htdocs/core/modules/facture/doc/pdf_crabe.modules.php
 
 		-
-			message: '#^Parameter \#3 \$posy of method pdf_crabe\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/facture/doc/pdf_crabe.modules.php
-
-		-
-			message: '#^Parameter \#4 \$posy of method pdf_crabe\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/facture/doc/pdf_crabe.modules.php
-
-		-
-			message: '#^Parameter \#5 \$heightforfooter of method pdf_crabe\:\:_tableau_versements\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/facture/doc/pdf_crabe.modules.php
-
-		-
 			message: '#^Property CommonInvoice\:\:\$type \(int\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 1
@@ -12562,18 +12472,6 @@ parameters:
 			message: '#^Parameter \#2 \$current_line of method pdf_octopus\:\:getInfosLineLastSituation\(\) expects FactureLigne, CommonInvoiceLine given\.$#'
 			identifier: argument.type
 			count: 1
-			path: ../../../htdocs/core/modules/facture/doc/pdf_octopus.modules.php
-
-		-
-			message: '#^Parameter \#3 \$tab_height of method pdf_octopus\:\:_tableFirstPage\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/facture/doc/pdf_octopus.modules.php
-
-		-
-			message: '#^Parameter \#3 \$tab_height of method pdf_octopus\:\:_tableau\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 3
 			path: ../../../htdocs/core/modules/facture/doc/pdf_octopus.modules.php
 
 		-
@@ -13747,12 +13645,6 @@ parameters:
 			path: ../../../htdocs/core/modules/mrp/doc/pdf_vinci.modules.php
 
 		-
-			message: '#^Parameter \#3 \$posy of method pdf_vinci\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/mrp/doc/pdf_vinci.modules.php
-
-		-
 			message: '#^Parameter \#4 \$columnText of method CommonDocGenerator\:\:printStdColumnContent\(\) expects string, float given\.$#'
 			identifier: argument.type
 			count: 2
@@ -14077,18 +13969,6 @@ parameters:
 			path: ../../../htdocs/core/modules/propale/doc/pdf_azur.modules.php
 
 		-
-			message: '#^Parameter \#3 \$posy of method pdf_azur\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/propale/doc/pdf_azur.modules.php
-
-		-
-			message: '#^Parameter \#4 \$posy of method pdf_azur\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/propale/doc/pdf_azur.modules.php
-
-		-
 			message: '#^Property CommonObject\:\:\$multicurrency_tx \(array\<float\>\|float\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 5
@@ -14245,12 +14125,6 @@ parameters:
 			path: ../../../htdocs/core/modules/reception/doc/doc_generic_reception_odt.modules.php
 
 		-
-			message: '#^Parameter \#4 \$posy of method pdf_squille\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/reception/doc/pdf_squille.modules.php
-
-		-
 			message: '#^Property Reception\:\:\$trueWeight \(float\|int\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 1
@@ -14389,18 +14263,6 @@ parameters:
 			path: ../../../htdocs/core/modules/supplier_invoice/doc/doc_generic_supplier_invoice_odt.modules.php
 
 		-
-			message: '#^Parameter \#4 \$posy of method pdf_canelle\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/supplier_invoice/doc/pdf_canelle.modules.php
-
-		-
-			message: '#^Parameter \#5 \$heightforfooter of method pdf_canelle\:\:_tableau_versements\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/supplier_invoice/doc/pdf_canelle.modules.php
-
-		-
 			message: '#^Property CommonObject\:\:\$multicurrency_tx \(array\<float\>\|float\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 1
@@ -14445,18 +14307,6 @@ parameters:
 		-
 			message: '#^Left side of \|\| is always false\.$#'
 			identifier: booleanOr.leftAlwaysFalse
-			count: 1
-			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_cornas.modules.php
-
-		-
-			message: '#^Parameter \#3 \$posy of method pdf_cornas\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_cornas.modules.php
-
-		-
-			message: '#^Parameter \#4 \$posy of method pdf_cornas\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
 			count: 1
 			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_cornas.modules.php
 
@@ -14575,18 +14425,6 @@ parameters:
 			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_muscadet.modules.php
 
 		-
-			message: '#^Parameter \#3 \$posy of method pdf_muscadet\:\:_tableau_info\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_muscadet.modules.php
-
-		-
-			message: '#^Parameter \#4 \$posy of method pdf_muscadet\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_muscadet.modules.php
-
-		-
 			message: '#^Property CommandeFournisseur\:\:\$multicurrency_tx \(float\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 1
@@ -14603,18 +14441,6 @@ parameters:
 			identifier: ternary.alwaysFalse
 			count: 1
 			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_muscadet.modules.php
-
-		-
-			message: '#^Parameter \#3 \$posy of method pdf_standard_supplierpayment\:\:_tableau_cheque\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/supplier_payment/doc/pdf_standard_supplierpayment.modules.php
-
-		-
-			message: '#^Parameter \#3 \$tab_height of method pdf_standard_supplierpayment\:\:_tableau\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 6
-			path: ../../../htdocs/core/modules/supplier_payment/doc/pdf_standard_supplierpayment.modules.php
 
 		-
 			message: '#^Parameter \#1 \$line of method CommonDocGenerator\:\:get_substitutionarray_lines\(\) expects CommonObjectLine, CommonObject\|stdClass given\.$#'
@@ -14649,12 +14475,6 @@ parameters:
 		-
 			message: '#^Left side of \|\| is always false\.$#'
 			identifier: booleanOr.leftAlwaysFalse
-			count: 1
-			path: ../../../htdocs/core/modules/supplier_proposal/doc/pdf_zenith.modules.php
-
-		-
-			message: '#^Parameter \#4 \$posy of method pdf_zenith\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
 			count: 1
 			path: ../../../htdocs/core/modules/supplier_proposal/doc/pdf_zenith.modules.php
 
