@@ -1708,7 +1708,6 @@ class FormMail extends Form
 
 		  		console.log("We choose a layout for email template=" + template + ", subject="+subject);
 
-
 				console.log("We choose a layout for email template " + template);
 
 				$(".template-option").removeClass("selected");
