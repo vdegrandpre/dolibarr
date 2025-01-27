@@ -1604,7 +1604,7 @@ if ($socid && $action != 'edit' && $action != 'create' && $action != 'editcard' 
 			print '<tr class="oddeven">';
 			// Label
 			print '<td class="tdoverflowmax150" title="'.dolPrintHTMLForAttribute($rib->label).'">'.dolPrintHTML($rib->label);
-			print '<span class="opacitymedium">'.dolPrintHTML($rib->bank).'</span>';
+			print '<br><span class="opacitymedium">'.dolPrintHTML($rib->bank).'</span>';
 			print '</td>';
 
 			// External system ID
