@@ -17065,12 +17065,6 @@ parameters:
 			path: ../../../htdocs/expedition/class/expedition.class.php
 
 		-
-			message: '#^Variable \$line might not be defined\.$#'
-			identifier: variable.undefined
-			count: 77
-			path: ../../../htdocs/expedition/class/expedition.class.php
-
-		-
 			message: '#^Negated boolean expression is always true\.$#'
 			identifier: booleanNot.alwaysTrue
 			count: 2
