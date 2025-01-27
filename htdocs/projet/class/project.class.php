@@ -2197,15 +2197,15 @@ class Project extends CommonObject
 					$date = explode('-', $obj->element_date);
 					$week_number = getWeekNumber($date[2], $date[1], $date[0]);
 				}
-				if (!isset($this->monthWorkLoadPerTask[$week_number][$obj->fk_element])) {
-					$this->monthWorkLoadPerTask[$week_number][$obj->fk_element] = 0;
-				}
 				'@phan-var-force int $week_number';  // Needed because phan considers it might be null
 				if (empty($weekalreadyfound[$week_number])) {
 					$this->monthWorkLoad[$week_number] = $obj->element_duration;
 					$this->monthWorkLoadPerTask[$week_number][$obj->fk_element] = $obj->element_duration;
 				} else {
 					$this->monthWorkLoad[$week_number] += $obj->element_duration;
+					if (!isset($this->monthWorkLoadPerTask[$week_number][$obj->fk_element])) {
+						$this->monthWorkLoadPerTask[$week_number][$obj->fk_element] = array();
+					}
 					$this->monthWorkLoadPerTask[$week_number][$obj->fk_element] += $obj->element_duration;
 				}
 				$weekalreadyfound[$week_number] = 1;
