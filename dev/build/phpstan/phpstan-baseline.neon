@@ -12091,12 +12091,6 @@ parameters:
 			path: ../../../htdocs/core/modules/commande/doc/pdf_einstein.modules.php
 
 		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/commande/doc/pdf_einstein.modules.php
-
-		-
 			message: '#^Property Commande\:\:\$availability \(string\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 1
@@ -12277,12 +12271,6 @@ parameters:
 			path: ../../../htdocs/core/modules/delivery/doc/pdf_storm.modules.php
 
 		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/delivery/doc/pdf_storm.modules.php
-
-		-
 			message: '#^Property CommonDocGenerator\:\:\$cols \(array\<string, array\{rank\: int, width\: float\|int, status\: bool, title\: array\{textkey\: string, label\: string, align\: string, padding\: array\{float, float, float, float\}\}, content\: array\{align\: string, padding\: array\{float, float, float, float\}\}\}\>\) does not accept non\-empty\-array\<string, array\{rank\: 10, width\: int, status\: false, title\: array\{textkey\: ''Photo'', label\: '' ''\}, content\: array\{padding\: array\{0, 0, 0, 0\}\}, border\-left\: false\}\|array\{rank\: int, width\: float\|int, status\: bool, title\: array\{textkey\: string, label\: string, align\: string, padding\: array\{float, float, float, float\}\}, content\: array\{align\: string, padding\: array\{float, float, float, float\}\}\}\>\.$#'
 			identifier: assign.propertyType
 			count: 1
@@ -12328,12 +12316,6 @@ parameters:
 			message: '#^Parameter \#3 \$posy of method pdf_typhon\:\:_tableau_info\(\) expects int, float given\.$#'
 			identifier: argument.type
 			count: 1
-			path: ../../../htdocs/core/modules/delivery/doc/pdf_typhon.modules.php
-
-		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
 			path: ../../../htdocs/core/modules/delivery/doc/pdf_typhon.modules.php
 
 		-
@@ -12463,12 +12445,6 @@ parameters:
 			path: ../../../htdocs/core/modules/expedition/doc/pdf_rouget.modules.php
 
 		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/expedition/doc/pdf_rouget.modules.php
-
-		-
 			message: '#^Ternary operator condition is always false\.$#'
 			identifier: ternary.alwaysFalse
 			count: 1
@@ -12556,12 +12532,6 @@ parameters:
 			message: '#^Parameter \#5 \$heightforfooter of method pdf_crabe\:\:_tableau_versements\(\) expects int, float given\.$#'
 			identifier: argument.type
 			count: 1
-			path: ../../../htdocs/core/modules/facture/doc/pdf_crabe.modules.php
-
-		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
 			path: ../../../htdocs/core/modules/facture/doc/pdf_crabe.modules.php
 
 		-
@@ -13747,12 +13717,6 @@ parameters:
 			path: ../../../htdocs/core/modules/movement/doc/pdf_standard_movementstock.modules.php
 
 		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/movement/doc/pdf_standard_movementstock.modules.php
-
-		-
 			message: '#^Parameter \#1 \$object of method CommonDocGenerator\:\:get_substitutionarray_each_var_object\(\) expects array\<string, CommonObject\|float\|int\|string\>, Mo given\.$#'
 			identifier: argument.type
 			count: 1
@@ -14131,12 +14095,6 @@ parameters:
 			path: ../../../htdocs/core/modules/propale/doc/pdf_azur.modules.php
 
 		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/propale/doc/pdf_azur.modules.php
-
-		-
 			message: '#^Property CommonObject\:\:\$multicurrency_tx \(array\<float\>\|float\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 5
@@ -14299,12 +14257,6 @@ parameters:
 			path: ../../../htdocs/core/modules/reception/doc/pdf_squille.modules.php
 
 		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/reception/doc/pdf_squille.modules.php
-
-		-
 			message: '#^Property Reception\:\:\$trueWeight \(float\|int\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 1
@@ -14345,18 +14297,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: ../../../htdocs/core/modules/stock/doc/doc_generic_stock_odt.modules.php
-
-		-
-			message: '#^Parameter \#4 \$posy of method pdf_eagle\:\:_tableau_tot\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../../htdocs/core/modules/stocktransfer/doc/pdf_eagle.modules.php
-
-		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/stocktransfer/doc/pdf_eagle.modules.php
 
 		-
 			message: '#^Property CommonDocGenerator\:\:\$cols \(array\<string, array\{rank\: int, width\: float\|int, status\: bool, title\: array\{textkey\: string, label\: string, align\: string, padding\: array\{float, float, float, float\}\}, content\: array\{align\: string, padding\: array\{float, float, float, float\}\}\}\>\) does not accept non\-empty\-array\<string, array\{rank\: 0, width\: false, status\: true, title\: array\{textkey\: ''Designation'', align\: ''L'', padding\: array\{0\.5, 1, 0\.5, 1\.5\}\}, content\: array\{align\: ''L'', padding\: array\{1, 0\.5, 1, 1\.5\}\}\}\|array\{rank\: int, width\: float\|int, status\: bool, title\: array\{textkey\: string, label\: string, align\: string, padding\: array\{float, float, float, float\}\}, content\: array\{align\: string, padding\: array\{float, float, float, float\}\}\}\>\.$#'
@@ -14464,12 +14404,6 @@ parameters:
 			message: '#^Parameter \#5 \$heightforfooter of method pdf_canelle\:\:_tableau_versements\(\) expects int, float given\.$#'
 			identifier: argument.type
 			count: 1
-			path: ../../../htdocs/core/modules/supplier_invoice/doc/pdf_canelle.modules.php
-
-		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
 			path: ../../../htdocs/core/modules/supplier_invoice/doc/pdf_canelle.modules.php
 
 		-
@@ -14659,12 +14593,6 @@ parameters:
 			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_muscadet.modules.php
 
 		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../../htdocs/core/modules/supplier_order/doc/pdf_muscadet.modules.php
-
-		-
 			message: '#^Property CommandeFournisseur\:\:\$multicurrency_tx \(float\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 1
@@ -14710,12 +14638,6 @@ parameters:
 			message: '#^Left side of && is always true\.$#'
 			identifier: booleanAnd.leftAlwaysTrue
 			count: 1
-			path: ../../../htdocs/core/modules/supplier_proposal/doc/pdf_aurore.modules.php
-
-		-
-			message: '#^Parameter \#5 \$w of function pdf_writelinedesc expects int, float given\.$#'
-			identifier: argument.type
-			count: 2
 			path: ../../../htdocs/core/modules/supplier_proposal/doc/pdf_aurore.modules.php
 
 		-
