@@ -343,7 +343,7 @@ class PropaleLigne extends CommonObjectLine
 	 */
 	public $multicurrency_total_ttc;
 
-		/**
+	/**
 	 * @var float
 	 */
 	public $packaging;
