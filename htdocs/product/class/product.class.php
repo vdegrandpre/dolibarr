@@ -1592,7 +1592,7 @@ class Product extends CommonObject
 			$sql .= ", fk_user_modif = ".($user->id > 0 ? $user->id : 'NULL');
 			$sql .= ", mandatory_period = ".($this->mandatory_period);
 			if (getDolGlobalString('PRODUCT_USE_CUSTOMER_PACKAGING') && !empty($this->packaging)) {
-				$sql .= ", packaging = " . (int) $this->packaging;
+				$sql .= ", packaging = " . (float) $this->packaging;
 			}
 			// stock field is not here because it is a denormalized value from product_stock.
 			$sql .= " WHERE rowid = ".((int) $id);
