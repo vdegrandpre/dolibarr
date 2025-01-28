@@ -2211,8 +2211,9 @@ class CommandeFournisseur extends CommonOrder
 			$this->line->total_localtax2 = (float) $total_localtax2;
 			$this->line->total_ttc = (float) $total_ttc;
 			$this->line->product_type = $type;
-			$this->line->special_code   = (!empty($special_code) ? $special_code : 0);
+			$this->line->special_code = (!empty($special_code) ? $special_code : 0);
 			$this->line->origin = $origin;
+			$this->line->origin_type = $origin;
 			$this->line->origin_id = $origin_id;
 			$this->line->fk_unit = $fk_unit;
 
