@@ -553,16 +553,16 @@ class CommandeFournisseur extends CommonOrder
 			$this->user_validation_id = $obj->user_validation_id;
 			$this->user_approve_id = $obj->user_approve_id;
 			$this->user_approve_id2 = $obj->user_approve_id2;
-			$this->total_ht				= $obj->total_ht;
-			$this->total_tva			= $obj->total_tva;
-			$this->total_localtax1		= $obj->localtax1;
-			$this->total_localtax2		= $obj->localtax2;
-			$this->total_ttc			= $obj->total_ttc;
+			$this->total_ht = $obj->total_ht;
+			$this->total_tva = $obj->total_tva;
+			$this->total_localtax1 = $obj->localtax1;
+			$this->total_localtax2 = $obj->localtax2;
+			$this->total_ttc = $obj->total_ttc;
 			$this->date_creation = $this->db->jdate($obj->date_creation);
 			$this->date_valid = $this->db->jdate($obj->date_valid);
-			$this->date_approve			= $this->db->jdate($obj->date_approve);
-			$this->date_approve2		= $this->db->jdate($obj->date_approve2);
-			$this->date_commande		= $this->db->jdate($obj->date_commande); // date we make the order to supplier
+			$this->date_approve = $this->db->jdate($obj->date_approve);
+			$this->date_approve2 = $this->db->jdate($obj->date_approve2);
+			$this->date_commande = $this->db->jdate($obj->date_commande); // date we make the order to supplier
 			if (isset($obj->date_commande)) {
 				$this->date = $this->date_commande;
 			} else {
@@ -1372,9 +1372,11 @@ class CommandeFournisseur extends CommonOrder
 					$this->ref = $this->newref;
 
 					if ($movetoapprovestatus) {
-						$this->statut = self::STATUS_ACCEPTED;
+						$this->statut = self::STATUS_ACCEPTED; // deprecated
+						$this->status = self::STATUS_ACCEPTED;
 					} else {
-						$this->statut = self::STATUS_VALIDATED;
+						$this->statut = self::STATUS_VALIDATED; // deprecated
+						$this->status = self::STATUS_VALIDATED;
 					}
 					if (empty($secondlevel)) {	// standard or first level approval
 						$this->date_approve = $now;
@@ -1531,7 +1533,8 @@ class CommandeFournisseur extends CommonOrder
 
 			dol_syslog(get_class($this)."::commande", LOG_DEBUG);
 			if ($this->db->query($sql)) {
-				$this->statut = self::STATUS_ORDERSENT;
+				$this->statut = self::STATUS_ORDERSENT; // deprecated
+				$this->status = self::STATUS_ORDERSENT;
 				$this->methode_commande_id = $methode;
 				$this->date_commande = $date;
 				$this->context = array('comments' => $comment);
@@ -1827,7 +1830,7 @@ class CommandeFournisseur extends CommonOrder
 		$sql .= " localtax2=".(isset($this->total_localtax2) ? $this->total_localtax2 : "null").",";
 		$sql .= " total_ht=".(isset($this->total_ht) ? $this->total_ht : "null").",";
 		$sql .= " total_ttc=".(isset($this->total_ttc) ? $this->total_ttc : "null").",";
-		$sql .= " fk_statut=".(isset($this->statut) ? $this->statut : "null").",";
+		$sql .= " fk_statut=".(isset($this->status) ? $this->status : "null").",";
 		$sql .= " fk_user_author=".(isset($this->user_author_id) ? $this->user_author_id : "null").",";
 		$sql .= " fk_user_valid=".(isset($this->user_validation_id) && $this->user_validation_id > 0 ? $this->user_validation_id : "null").",";
 		$sql .= " fk_projet=".(isset($this->fk_project) ? $this->fk_project : "null").",";
@@ -1923,7 +1926,8 @@ class CommandeFournisseur extends CommonOrder
 		}
 
 		$this->id = 0;
-		$this->statut = self::STATUS_DRAFT;
+		$this->statut = self::STATUS_DRAFT; // deprecated
+		$this->status = self::STATUS_DRAFT;
 
 		// Clear fields
 		$this->user_author_id     = $user->id;
@@ -2259,8 +2263,7 @@ class CommandeFournisseur extends CommonOrder
 					return -1;
 				}
 			} else {
-				$this->error = $this->line->error;
-				$this->errors = $this->line->errors;
+				$this->setErrorsFromObject($this->line);
 				dol_syslog(get_class($this)."::addline error=".$this->error, LOG_ERR);
 				$this->db->rollback();
 				return -1;
@@ -2313,7 +2316,7 @@ class CommandeFournisseur extends CommonOrder
 
 		$inventorycode = dol_print_date(dol_now(), 'dayhourlog');
 
-		if (($this->statut == self::STATUS_ORDERSENT || $this->statut == self::STATUS_RECEIVED_PARTIALLY || $this->statut == self::STATUS_RECEIVED_COMPLETELY)) {
+		if (($this->status == self::STATUS_ORDERSENT || $this->status == self::STATUS_RECEIVED_PARTIALLY || $this->status == self::STATUS_RECEIVED_COMPLETELY)) {
 			$this->db->begin();
 
 			$sql = "INSERT INTO ".$this->db->prefix()."receptiondet_batch";
@@ -2387,7 +2390,7 @@ class CommandeFournisseur extends CommonOrder
 	{
 		global $user;
 
-		if ($this->statut == 0) {
+		if ($this->status == 0) {
 			$line = new CommandeFournisseurLigne($this->db);
 
 			if ($line->fetch($idline) <= 0) {
@@ -2680,8 +2683,8 @@ class CommandeFournisseur extends CommonOrder
 				$resql = $this->db->query($sql);
 				if ($resql) {
 					$result = 1;
-					$old_statut = $this->statut;
-					$this->statut = $statut;
+					$old_statut = $this->status;
+					$this->status = $statut;
 					$this->context['actionmsg2'] = $comment;
 
 					// Call trigger
@@ -2694,7 +2697,7 @@ class CommandeFournisseur extends CommonOrder
 					if (empty($error)) {
 						$this->db->commit();
 					} else {
-						$this->statut = $old_statut;
+						$this->status = $old_statut;
 						$this->db->rollback();
 						$this->error = $this->db->lasterror();
 						$result = -1;
@@ -2932,7 +2935,7 @@ class CommandeFournisseur extends CommonOrder
 		}
 
 		if (!$error) {
-			$this->statut = $status;
+			$this->status = $status;
 			$this->db->commit();
 			return 1;
 		} else {
@@ -2972,7 +2975,7 @@ class CommandeFournisseur extends CommonOrder
 
 		$error = 0;
 
-		if ($this->statut == self::STATUS_DRAFT) {
+		if ($this->status == self::STATUS_DRAFT) {
 			// Clean parameters
 			if (empty($qty)) {
 				$qty = 0;
@@ -3193,7 +3196,7 @@ class CommandeFournisseur extends CommonOrder
 		$this->multicurrency_tx = 1;
 		$this->multicurrency_code = $conf->currency;
 
-		$this->statut = 0;
+		$this->statut = 0; // deprecated
 		$this->status = 0;
 
 		// Lines
@@ -3536,7 +3539,7 @@ class CommandeFournisseur extends CommonOrder
 	{
 		global $conf;
 
-		if ($this->statut == self::STATUS_ORDERSENT || $this->statut == self::STATUS_RECEIVED_PARTIALLY) {
+		if ($this->status == self::STATUS_ORDERSENT || $this->status == self::STATUS_RECEIVED_PARTIALLY) {
 			$now = dol_now();
 			if (!empty($this->delivery_date)) {
 				$date_to_test = $this->delivery_date;
@@ -3550,7 +3553,7 @@ class CommandeFournisseur extends CommonOrder
 			$now = dol_now();
 			$date_to_test = $this->date_commande;
 
-			return ($this->statut > 0 && $this->statut < 5) && $date_to_test && $date_to_test < ($now - $conf->commande->fournisseur->warning_delay);
+			return ($this->status > 0 && $this->status < 5) && $date_to_test && $date_to_test < ($now - $conf->commande->fournisseur->warning_delay);
 		}
 	}
 
@@ -3569,7 +3572,7 @@ class CommandeFournisseur extends CommonOrder
 
 		$text = '';
 
-		if ($this->statut == self::STATUS_ORDERSENT || $this->statut == self::STATUS_RECEIVED_PARTIALLY) {
+		if ($this->status == self::STATUS_ORDERSENT || $this->status == self::STATUS_RECEIVED_PARTIALLY) {
 			if (!empty($this->delivery_date)) {
 				$text = $langs->trans("DeliveryDate").' '.dol_print_date($this->delivery_date, 'day');
 			} else {
