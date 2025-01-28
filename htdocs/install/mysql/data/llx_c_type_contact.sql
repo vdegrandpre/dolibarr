@@ -74,6 +74,7 @@ insert into llx_c_type_contact (element, source, code, libelle, active ) values 
 insert into llx_c_type_contact (element, source, code, libelle, active ) values ('commande', 'external', 'SHIPPING',      'Contact client livraison commande', 1);
 
 -- Shipment / Expedition
+insert into llx_c_type_contact (element, source, code, libelle, active ) values ('expedition', 'internal', 'SALESREPFOLL',  'Responsable suivi de l\'expédition', 1);
 insert into llx_c_type_contact (element, source, code, libelle, active ) values ('expedition', 'external', 'CUSTOMER',      'Customer shipping contact', 1);
 insert into llx_c_type_contact (element, source, code, libelle, active ) values ('expedition', 'external', 'SHIPPING',      'Loading facility', 1);
 insert into llx_c_type_contact (element, source, code, libelle, active ) values ('expedition', 'external', 'DELIVERY',      'Delivery facility', 1);
