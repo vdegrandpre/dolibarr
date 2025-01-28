@@ -2128,7 +2128,7 @@ class CommandeFournisseur extends CommonOrder
 					$prod->get_buyprice($fk_prod_fourn_price, $qty, $fk_product, 'none', (empty($this->fk_soc) ? $this->socid : $this->fk_soc));
 
 					if ($qty < $prod->packaging) {
-						$qty = $prod->packaging;
+						$qty = (float) $prod->packaging;
 					} else {
 						if (!empty($prod->packaging) && (fmod((float) $qty, (float) $prod->packaging)  > 0.000001)) {
 							$coeff = intval((float) $qty / $prod->packaging) + 1;
