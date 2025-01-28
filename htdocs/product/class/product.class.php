@@ -14,7 +14,7 @@
  * Copyright (C) 2014		Ion agorria			    <ion@agorria.com>
  * Copyright (C) 2016-2024	Ferran Marcet			<fmarcet@2byte.es>
  * Copyright (C) 2017		Gustavo Novaro
- * Copyright (C) 2019-2024  Frédéric France         <frederic.france@free.fr>
+ * Copyright (C) 2019-2025  Frédéric France         <frederic.france@free.fr>
  * Copyright (C) 2023		Benjamin Falière		<benjamin.faliere@altairis.fr>
  * Copyright (C) 2024		MDW						<mdeweerd@users.noreply.github.com>
  *
@@ -324,7 +324,7 @@ class Product extends CommonObject
 	public $fourn_multicurrency_code;
 
 	/**
-	 * @var float
+	 * @var ?float
 	 */
 	public $packaging;
 
@@ -671,6 +671,11 @@ class Product extends CommonObject
 	 * @var array{}|array{suppliers:int,nb:int,rows:int,qty:float} stats supplier invoices
 	 */
 	public $stats_facture_fournisseur = array();
+
+	/**
+	 * @var array{}|array{suppliers:int,nb:int,rows:int,qty:float} stats supplier invoices rec
+	 */
+	public $stats_facturefournrec = array();
 
 	/**
 	 * @var int|string Size of image / height
