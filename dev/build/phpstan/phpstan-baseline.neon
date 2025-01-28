@@ -13921,12 +13921,6 @@ parameters:
 			path: ../../../htdocs/core/modules/propale/doc/doc_generic_proposal_odt.modules.php
 
 		-
-			message: '#^Call to function is_object\(\) with object will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: ../../../htdocs/core/modules/propale/doc/pdf_azur.modules.php
-
-		-
 			message: '#^Property CommonObject\:\:\$multicurrency_tx \(array\<float\>\|float\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 5
@@ -29985,12 +29979,6 @@ parameters:
 		-
 			message: '#^Negated boolean expression is always true\.$#'
 			identifier: booleanNot.alwaysTrue
-			count: 1
-			path: ../../../htdocs/ticket/card.php
-
-		-
-			message: '#^Variable \$limit might not be defined\.$#'
-			identifier: variable.undefined
 			count: 1
 			path: ../../../htdocs/ticket/card.php
 
