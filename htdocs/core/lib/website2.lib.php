@@ -67,8 +67,9 @@ function dolSavePageAlias($filealias, $object, $objectpage)
 	$aliascontent = '<?php'."\n";
 	$aliascontent .= "// File generated to wrap the alias page - DO NOT MODIFY - It is just a wrapper to real page\n";
 	$aliascontent .= 'global $dolibarr_main_data_root;'."\n";
-	$aliascontent .= 'if (empty($dolibarr_main_data_root)) require \'./page'.$objectpage->id.'.tpl.php\'; ';
-	$aliascontent .= 'else require $dolibarr_main_data_root.\'/website/\'.$website->ref.\'/page'.$objectpage->id.'.tpl.php\';'."\n";
+	$aliascontent .= 'if (empty($dolibarr_main_data_root)) $res=include \'./page'.$objectpage->id.'.tpl.php\'; ';
+	$aliascontent .= 'else $res=include $dolibarr_main_data_root.\'/website/\'.$website->ref.\'/page'.$objectpage->id.'.tpl.php\';'."\n";
+	$aliascontent .= 'if ($res === false) { http_response_code(500); print \'Failed to make include\'; }'."\n";
 	$aliascontent .= '?>'."\n";
 	$result = file_put_contents($filealias, $aliascontent);
 	if ($result === false) {
@@ -87,8 +88,9 @@ function dolSavePageAlias($filealias, $object, $objectpage)
 		$aliascontent = '<?php'."\n";
 		$aliascontent .= "// File generated to wrap the alias page - DO NOT MODIFY - It is just a wrapper to real page\n";
 		$aliascontent .= 'global $dolibarr_main_data_root;'."\n";
-		$aliascontent .= 'if (empty($dolibarr_main_data_root)) require \'../page'.$objectpage->id.'.tpl.php\'; ';
-		$aliascontent .= 'else require $dolibarr_main_data_root.\'/website/\'.$website->ref.\'/page'.$objectpage->id.'.tpl.php\';'."\n";
+		$aliascontent .= 'if (empty($dolibarr_main_data_root)) $res=include \'../page'.$objectpage->id.'.tpl.php\'; ';
+		$aliascontent .= 'else $res=include $dolibarr_main_data_root.\'/website/\'.$website->ref.\'/page'.$objectpage->id.'.tpl.php\';'."\n";
+		$aliascontent .= 'if ($res === false) { http_response_code(500); print \'Failed to make include\'; }'."\n";
 		$aliascontent .= '?>'."\n";
 		$result = file_put_contents($filealiassub, $aliascontent);
 		if ($result === false) {
@@ -110,8 +112,9 @@ function dolSavePageAlias($filealias, $object, $objectpage)
 				$aliascontent = '<?php'."\n";
 				$aliascontent .= "// File generated to wrap the alias page - DO NOT MODIFY - It is just a wrapper to real page\n";
 				$aliascontent .= 'global $dolibarr_main_data_root;'."\n";
-				$aliascontent .= 'if (empty($dolibarr_main_data_root)) require \'../page'.$objectpage->id.'.tpl.php\'; ';
-				$aliascontent .= 'else require $dolibarr_main_data_root.\'/website/\'.$website->ref.\'/page'.$objectpage->id.'.tpl.php\';'."\n";
+				$aliascontent .= 'if (empty($dolibarr_main_data_root)) $res=include \'../page'.$objectpage->id.'.tpl.php\'; ';
+				$aliascontent .= 'else $res=include $dolibarr_main_data_root.\'/website/\'.$website->ref.\'/page'.$objectpage->id.'.tpl.php\';'."\n";
+				$aliascontent .= 'if ($res === false) { http_response_code(500); print \'Failed to make include\'; }'."\n";
 				$aliascontent .= '?>'."\n";
 
 				dol_mkdir($dirname.'/'.$sublang);
@@ -322,14 +325,14 @@ function dolSavePageContent($filetpl, Website $object, WebsitePage $objectpage, 
 		$tplcontent .= "// Now fix the content for SEO or multilanguage\n";
 		// Old method for custom SEO
 		if (strpos($objectpage->content, '$__PAGE__KEYWORDS__') !== false) {
-			$tplcontent .= '$tmp = preg_replace("/^<meta name=\"keywords\" content=\".*?\" \/>/ms", "<meta name=\"keywords\" content=\"" . dolPrintHTMLForAttribute($__PAGE__KEYWORDS__, 1) . "\"  />", $tmp);'."\n";
+			$tplcontent .= '$tmp = preg_replace("/^<meta name=\"keywords\" content=\".*?\" \/>/ms", "<meta name=\"keywords\" content=\"" . dolPrintHTMLForAttribute($__PAGE__KEYWORDS__ ?? "", 1) . "\"  />", $tmp);'."\n";
 		}
 		if (strpos($objectpage->content, '$__PAGE__TITLE__') !== false) {
-			$tplcontent .= '$tmp = preg_replace("/^<title>.*?<\/title>/ms", "<title>" . dolPrintHTMLForAttribute($__PAGE__TITLE__, 1) . "</title>", $tmp);'."\n";
-			$tplcontent .= '$tmp = preg_replace("/^<meta name=\"title\" content=\".*?\" \/>/ms", "<meta name=\"title\" content=\"" . dolPrintHTMLForAttribute($__PAGE__TITLE__, 1) . "\"  />", $tmp);'."\n";
+			$tplcontent .= '$tmp = preg_replace("/^<title>.*?<\/title>/ms", "<title>" . dolPrintHTMLForAttribute($__PAGE__TITLE__ ?? "", 1) . "</title>", $tmp);'."\n";
+			$tplcontent .= '$tmp = preg_replace("/^<meta name=\"title\" content=\".*?\" \/>/ms", "<meta name=\"title\" content=\"" . dolPrintHTMLForAttribute($__PAGE__TITLE__ ?? "", 1) . "\"  />", $tmp);'."\n";
 		}
 		if (strpos($objectpage->content, '$__PAGE__DESC__') !== false) {
-			$tplcontent .= '$tmp = preg_replace("/^<meta name=\"description\" content=\".*?\" \/>/ms", "<meta name=\"description\" content=\"" . dolPrintHTMLForAttribute($__PAGE__DESC__, 1) . "\"  />", $tmp);'."\n";
+			$tplcontent .= '$tmp = preg_replace("/^<meta name=\"description\" content=\".*?\" \/>/ms", "<meta name=\"description\" content=\"" . dolPrintHTMLForAttribute($__PAGE__DESC__ ?? "", 1) . "\"  />", $tmp);'."\n";
 		}
 		// New method for custom SEO
 		if (strpos($objectpage->content, 'define("__SEO_PAGE_LANG__"') !== false) {
