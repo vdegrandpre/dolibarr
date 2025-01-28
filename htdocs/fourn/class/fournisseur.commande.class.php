@@ -14,8 +14,8 @@
  * Copyright (C) 2021		Josep Lluís Amador		<joseplluis@lliuretic.cat>
  * Copyright (C) 2022		Gauthier VERDOL			<gauthier.verdol@atm-consulting.fr>
  * Copyright (C) 2024		Solution Libre SAS		<contact@solution-libre.fr>
- * Copyright (C) 2024		MDW							<mdeweerd@users.noreply.github.com>
- * Copyright (C) 2024		William Mead		<william.mead@manchenumerique.fr>
+ * Copyright (C) 2024		MDW						<mdeweerd@users.noreply.github.com>
+ * Copyright (C) 2024		William Mead			<william.mead@manchenumerique.fr>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -3358,7 +3358,8 @@ class CommandeFournisseur extends CommonOrder
 			while ($obj = $this->db->fetch_object($resql)) {
 				$commandestatic->delivery_date = $this->db->jdate($obj->delivery_date);
 				$commandestatic->date_commande = $this->db->jdate($obj->date_commande);
-				$commandestatic->statut = $obj->fk_statut;
+				$commandestatic->statut = $obj->fk_statut; // deprecated
+				$commandestatic->status = $obj->fk_statut;
 
 				$response->nbtodo++;
 				$response->total += $obj->total_ht;
