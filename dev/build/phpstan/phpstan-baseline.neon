@@ -13933,12 +13933,6 @@ parameters:
 			path: ../../../htdocs/core/modules/propale/doc/pdf_azur.modules.php
 
 		-
-			message: '#^Call to function is_object\(\) with object will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: ../../../htdocs/core/modules/propale/doc/pdf_cyan.modules.php
-
-		-
 			message: '#^Property CommonObject\:\:\$multicurrency_tx \(array\<float\>\|float\) in isset\(\) is not nullable\.$#'
 			identifier: isset.property
 			count: 5

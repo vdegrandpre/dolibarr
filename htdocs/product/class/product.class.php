@@ -324,7 +324,7 @@ class Product extends CommonObject
 	public $fourn_multicurrency_code;
 
 	/**
-	 * @var float
+	 * @var ?float
 	 */
 	public $packaging;
 
