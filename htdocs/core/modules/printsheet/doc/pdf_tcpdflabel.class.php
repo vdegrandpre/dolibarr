@@ -87,10 +87,10 @@ class pdf_tcpdflabel extends CommonStickerGenerator
 	 * @param string  $code		   code to print
 	 * @param string  $encoding	   type of barcode
 	 * @param boolean $is2d		   true if 2d barcode
-	 * @param int	  $x		   x position in user units
-	 * @param int	  $y		   y position in user units
-	 * @param int	  $w		   width in user units
-	 * @param int	  $h		   height in user units
+	 * @param float	  $x		   x position in user units
+	 * @param float	  $y		   y position in user units
+	 * @param float	  $w		   width in user units
+	 * @param float	  $h		   height in user units
 	 * @return void
 	 */
 	private function writeBarcode(&$pdf, $code, $encoding, $is2d, $x, $y, $w, $h)

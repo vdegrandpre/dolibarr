@@ -13759,24 +13759,6 @@ parameters:
 			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
 
 		-
-			message: '#^Parameter \#5 \$x of method pdf_tcpdflabel\:\:writeBarcode\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 3
-			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
-
-		-
-			message: '#^Parameter \#7 \$w of method pdf_tcpdflabel\:\:writeBarcode\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 6
-			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
-
-		-
-			message: '#^Parameter \#8 \$h of method pdf_tcpdflabel\:\:writeBarcode\(\) expects int, float given\.$#'
-			identifier: argument.type
-			count: 6
-			path: ../../../htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
-
-		-
 			message: '#^Parameter \#1 \$object of method CommonDocGenerator\:\:get_substitutionarray_each_var_object\(\) expects array\<string, CommonObject\|float\|int\|string\>, Product given\.$#'
 			identifier: argument.type
 			count: 1
