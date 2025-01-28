@@ -347,7 +347,7 @@ class InterfaceTicketEmail extends DolibarrTriggers
 	 * @param string 	$sendto			Addresses to send the mail, format "first@address.net, second@address.net," etc.
 	 * @param string 	$base_subject	email subject. Non-translated string.
 	 * @param string 	$body			email body (first line). Non-translated string.
-	 * @param Ticket 	$object			the ticket thet the email refers to
+	 * @param Ticket 	$object			the ticket that the email refers to
 	 * @param Translate $langs			the translation object
 	 * @return void
 	 */
@@ -420,7 +420,7 @@ class InterfaceTicketEmail extends DolibarrTriggers
 	 * @param string 	$base_subject	email subject. Non-translated string.
 	 * @param string	$body			email body (first line). Non-translated string.
 	 * @param string 	$see_ticket		string indicating the ticket public address
-	 * @param Ticket 	$object			the ticket thet the email refers to
+	 * @param Ticket 	$object			the ticket that the email refers to
 	 * @param Translate $langs			the translation object
 	 * @return void
 	 */
@@ -516,7 +516,7 @@ class InterfaceTicketEmail extends DolibarrTriggers
 	 * @param string 	$base_subject	email subject. Non-translated string.
 	 * @param string	$body			email body (first line). Non-translated string.
 	 * @param string 	$see_ticket		string indicating the ticket public address
-	 * @param Ticket 	$object			the ticket thet the email refers to
+	 * @param Ticket 	$object			the ticket that the email refers to
 	 * @param Translate $langs			the translation object
 	 * @return void
 	 */

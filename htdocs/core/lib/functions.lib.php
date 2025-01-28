@@ -1940,7 +1940,7 @@ function dol_escape_js($stringtoescape, $mode = 0, $noescapebackslashn = 0)
 }
 
 /**
- *  Returns text escaped by RFC 3986 for inclusion into a clicable link.
+ *  Returns text escaped by RFC 3986 for inclusion into a clickable link.
  *  This method can be used on the ...in links like href="javascript:..." because when clicking on such links, the browserfirst decode the strind
  *  and then interpret content that can be javascript.
  *  Usage of this escapement should be limited to links href="javascript:...". For common URL, use urlencode instead.
