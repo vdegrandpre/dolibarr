@@ -699,7 +699,7 @@ class Translate
 				$str
 			);
 
-			$str = preg_replace('/%\)/', '__percent_parenthesis__', $str);
+			$str = preg_replace('/([^%])%([^0sd])/', '__percent_parenthesis__', $str);
 
 			if (strpos($key, 'Format') !== 0) {
 				try {
