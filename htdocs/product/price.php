@@ -1764,7 +1764,7 @@ if (($action == 'edit_price' || $action == 'edit_level_price') && $object->getRi
 			print $form->textwithpicto($langs->trans("PackagingForThisProduct"), $langs->trans("PackagingForThisProductSellDesc"));
 			print '</td><td>';
 			$packaging = $object->packaging;
-			print '<input class="flat" name="packaging" size="5" value="' . price2num($packaging, 2).'">';
+			print '<input class="flat" name="packaging" size="5" value="' . price($packaging, 0, '', 1, -1, 2).'">';
 			print '</td>';
 			print '</tr>';
 		}
