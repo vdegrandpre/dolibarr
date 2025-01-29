@@ -352,8 +352,6 @@ echo '<span class="opacitymedium">'.$langs->trans("MyModuleSetupPage").'</span><
 if (!empty($formSetup->items)) {
 	print $formSetup->generateOutput(true);
 	print '<br>';
-} else {
-	print '<br>'.$langs->trans("NothingToSetup");
 }
 
 

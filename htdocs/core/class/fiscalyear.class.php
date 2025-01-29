@@ -355,9 +355,9 @@ class Fiscalyear extends CommonObject
 		if (empty($notooltip) && $user->hasRight('accounting', 'fiscalyear', 'write')) {
 			if (getDolGlobalString('MAIN_OPTIMIZEFORTEXTBROWSER')) {
 				$label = $langs->trans("FiscalPeriod");
-				$linkclose .= ' alt="'.dolPrintHtmlForAttribute($label).'"';
+				$linkclose .= ' alt="'.dolPrintHTMLForAttribute($label).'"';
 			}
-			$linkclose .= ' title="'.dolPrintHtmlForAttribute($label).'"';
+			$linkclose .= ' title="'.dolPrintHTMLForAttribute($label).'"';
 			$linkclose .= $dataparams.' class="'.$classfortooltip.'"';
 		}
 

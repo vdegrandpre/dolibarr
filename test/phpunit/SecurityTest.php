@@ -828,6 +828,24 @@ class SecurityTest extends CommonClassTest
 		$this->assertEquals($stringfixed, $result, 'Error in dolPrintHTMLForAttribute test 2');    // Expected '' because should failed because login 'auto' does not exists
 
 
+		// dolPrintHTMLForAttributeUrl - With dolPrintHTMLForAttributeUrl(), the param should already be and HTML URL encoded
+
+		$stringtotest = "<b>aa</b> & &amp; a=%10";
+		$stringfixed = "aa &amp; &amp; a=%10";
+		// $result = dol_escape_htmltag(dol_string_onlythesehtmltags($s, 1, 1, 1, 0, array()), 0, 0, '', $escapeonlyhtmltags, 1);
+		$result = dolPrintHTMLForAttributeUrl($stringtotest);
+		print __METHOD__." result=".$result."\n";
+		$this->assertEquals($stringfixed, $result, 'Error in dolPrintHTMLForAttributeUrl test 1');    // Expected '' because should failed because login 'auto' does not exists
+
+		// For a string that is already HTML (contains HTML tags) with special tags but badly formatted
+		$stringtotest = "aa & &amp; a=%10";
+		$stringfixed = "aa &amp; &amp; a=%10";
+		// $result = dol_escape_htmltag(dol_string_onlythesehtmltags($s, 1, 1, 1, 0, array()), 0, 0, '', $escapeonlyhtmltags, 1);
+		$result = dolPrintHTMLForAttributeUrl($stringtotest);
+		print __METHOD__." result=".$result."\n";
+		$this->assertEquals($stringfixed, $result, 'Error in dolPrintHTMLForAttributeUrl test 2');    // Expected '' because should failed because login 'auto' does not exists
+
+
 		// dolPrintHTML
 
 		/*

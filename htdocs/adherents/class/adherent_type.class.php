@@ -780,7 +780,7 @@ class AdherentType extends CommonObject
 			}
 		}
 		$linkstart = '<a href="'.$url.'"';
-		$linkstart .= ($label ? ' title="'.dolPrintHtmlForAttribute($label).'"' : ' title="tocomplete"');
+		$linkstart .= ($label ? ' title="'.dolPrintHTMLForAttribute($label).'"' : ' title="tocomplete"');
 		$linkstart .= $dataparams.' class="'.$classfortooltip.'">';
 
 		$linkend = '</a>';
