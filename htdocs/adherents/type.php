@@ -286,6 +286,9 @@ $help_url = 'EN:Module_Foundations|FR:Module_Adh&eacute;rents|ES:M&oacute;dulo_M
 llxHeader('', $title, $help_url, '', 0, 0, '', '', '', 'mod-member page-type');
 
 $arrayofselected = is_array($toselect) ? $toselect : array();
+$totalarray = [
+	'nbfield' => 0,
+];
 
 // List of members type
 if (!$rowid && $action != 'create' && $action != 'edit') {
