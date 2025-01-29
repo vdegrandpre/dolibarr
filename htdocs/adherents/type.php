@@ -9,7 +9,7 @@
  * Copyright (C) 2020		Josep Lluís Amador			<joseplluis@lliuretic.cat>
  * Copyright (C) 2021		Waël Almoman				<info@almoman.com>
  * Copyright (C) 2024		MDW							<mdeweerd@users.noreply.github.com>
- * Copyright (C) 2024       Frédéric France             <frederic.france@free.fr>
+ * Copyright (C) 2024-2025  Frédéric France             <frederic.france@free.fr>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -135,6 +135,9 @@ $result = restrictedArea($user, 'adherent', $rowid, 'adherent_type');
  *	Actions
  */
 $error = 0;
+
+// Selection of new fields
+include DOL_DOCUMENT_ROOT.'/core/actions_changeselectedfields.inc.php';
 
 if (GETPOST('button_removefilter_x', 'alpha') || GETPOST('button_removefilter.x', 'alpha') || GETPOST('button_removefilter', 'alpha')) { // All tests are required to be compatible with all browsers
 	$search_ref = "";
@@ -329,8 +332,14 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 		print '<input type="hidden" name="action" value="list">';
 		print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
 		print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+		print '<input type="hidden" name="page" value="'.$page.'">';
+		print '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
 		print '<input type="hidden" name="mode" value="'.$mode.'">';
 
+		$varpage = empty($contextpage) ? $_SERVER["PHP_SELF"] : $contextpage;
+		$htmlofselectarray = $form->multiSelectArrayWithCheckbox('selectedfields', $arrayfields, $varpage, getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN'));  // This also change content of $arrayfields with user setup
+		$selectedfields = ($mode != 'kanban' ? $htmlofselectarray : '');
+		// $selectedfields .= (count($arrayofmassactions) ? $form->showCheckAddButtons('checkforselect', 1) : '');
 
 		print_barre_liste($langs->trans("MembersTypes"), $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, $nbtotalofrecords, 'members', 0, $newcardbutton, '', $limit, 0, 0, 1);
 
@@ -341,11 +350,18 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 
 		print '<tr class="liste_titre">';
 		if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<th>&nbsp;</th>';
+			print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], "", '', '', '', $sortfield, $sortorder, 'center maxwidthsearch actioncolumn ');
+			$totalarray['nbfield']++;
 		}
-		print '<th>'.$langs->trans("Ref").'</th>';
-		print '<th>'.$langs->trans("Label").'</th>';
-		print '<th class="center">'.$langs->trans("MembersNature").'</th>';
+		if (!empty($arrayfields['t.rowid']['checked'])) {
+			print '<th>'.$langs->trans("Ref").'</th>';
+		}
+		if (!empty($arrayfields['t.libelle']['checked'])) {
+			print '<th>'.$langs->trans($arrayfields['t.libelle']['label']).'</th>';
+		}
+		if (!empty($arrayfields['t.morphy']['checked'])) {
+			print '<th class="center">'.$langs->trans("MembersNature").'</th>';
+		}
 		print '<th class="center">'.$langs->trans("MembershipDuration").'</th>';
 		print '<th class="center">'.$langs->trans("SubscriptionRequired").'</th>';
 		print '<th class="center">'.$langs->trans("Amount").'</th>';
@@ -353,7 +369,8 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 		print '<th class="center">'.$langs->trans("VoteAllowed").'</th>';
 		print '<th class="center">'.$langs->trans("Status").'</th>';
 		if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<th>&nbsp;</th>';
+			print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], "", '', '', '', $sortfield, $sortorder, 'maxwidthsearch center ');
+			$totalarray['nbfield']++;
 		}
 		print "</tr>\n";
 
@@ -397,13 +414,15 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 						print '<td class="center"><a class="editfielda" href="'.$_SERVER["PHP_SELF"].'?action=edit&rowid='.$objp->rowid.'">'.img_edit().'</a></td>';
 					}
 				}
-
-				print '<td class="nowraponall">';
-				print $membertype->getNomUrl(1);
-				//<a href="'.$_SERVER["PHP_SELF"].'?rowid='.$objp->rowid.'">'.img_object($langs->trans("ShowType"),'group').' '.$objp->rowid.'</a>
-				print '</td>';
-
-				print '<td>'.dol_escape_htmltag($objp->label).'</td>';
+				if (!empty($arrayfields['t.rowid']['checked'])) {
+					print '<td class="nowraponall">';
+					print $membertype->getNomUrl(1);
+					//<a href="'.$_SERVER["PHP_SELF"].'?rowid='.$objp->rowid.'">'.img_object($langs->trans("ShowType"),'group').' '.$objp->rowid.'</a>
+					print '</td>';
+				}
+				if (!empty($arrayfields['t.libelle']['checked'])) {
+					print '<td>'.dol_escape_htmltag($objp->label).'</td>';
+				}
 
 				print '<td class="center">';
 				if ($objp->morphy == 'phy') {
