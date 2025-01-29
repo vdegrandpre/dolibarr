@@ -369,11 +369,26 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 			print '<th class="center">'.$langs->trans("MembershipDuration").'</th>';
 			$totalarray['nbfield']++;
 		}
-		print '<th class="center">'.$langs->trans("SubscriptionRequired").'</th>';
-		print '<th class="center">'.$langs->trans("Amount").'</th>';
-		print '<th class="center">'.$langs->trans("CanEditAmountShort").'</th>';
-		print '<th class="center">'.$langs->trans("VoteAllowed").'</th>';
-		print '<th class="center">'.$langs->trans("Status").'</th>';
+		if (!empty($arrayfields['t.subscription']['checked'])) {
+			print '<th class="center">'.$langs->trans("SubscriptionRequired").'</th>';
+			$totalarray['nbfield']++;
+		}
+		if (!empty($arrayfields['t.amount']['checked'])) {
+			print '<th class="center">'.$langs->trans("Amount").'</th>';
+			$totalarray['nbfield']++;
+		}
+		if (!empty($arrayfields['t.caneditamount']['checked'])) {
+			print '<th class="center">'.$langs->trans("CanEditAmountShort").'</th>';
+			$totalarray['nbfield']++;
+		}
+		if (!empty($arrayfields['t.vote']['checked'])) {
+			print '<th class="center">'.$langs->trans("VoteAllowed").'</th>';
+			$totalarray['nbfield']++;
+		}
+		if (!empty($arrayfields['t.statut']['checked'])) {
+			print '<th class="center">'.$langs->trans("Status").'</th>';
+			$totalarray['nbfield']++;
+		}
 		if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 			print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], "", '', '', '', $sortfield, $sortorder, 'maxwidthsearch center ');
 			$totalarray['nbfield']++;
@@ -454,17 +469,21 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 					}
 					print '</td>';
 				}
-
-				print '<td class="center">'.yn($objp->subscription).'</td>';
-
-				print '<td class="center"><span class="amount">'.(is_null($objp->amount) || $objp->amount === '' ? '' : price($objp->amount)).'</span></td>';
-
-				print '<td class="center">'.yn($objp->caneditamount).'</td>';
-
-				print '<td class="center">'.yn($objp->vote).'</td>';
-
-				print '<td class="center">'.$membertype->getLibStatut(5).'</td>';
-
+				if (!empty($arrayfields['t.subscription']['checked'])) {
+					print '<td class="center">'.yn($objp->subscription).'</td>';
+				}
+				if (!empty($arrayfields['t.amount']['checked'])) {
+					print '<td class="center"><span class="amount">'.(is_null($objp->amount) || $objp->amount === '' ? '' : price($objp->amount)).'</span></td>';
+				}
+				if (!empty($arrayfields['t.caneditamount']['checked'])) {
+					print '<td class="center">'.yn($objp->caneditamount).'</td>';
+				}
+				if (!empty($arrayfields['t.vote']['checked'])) {
+					print '<td class="center">'.yn($objp->vote).'</td>';
+				}
+				if (!empty($arrayfields['t.statut']['checked'])) {
+					print '<td class="center">'.$membertype->getLibStatut(5).'</td>';
+				}
 				if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 					if ($user->hasRight('adherent', 'configurer')) {
 						print '<td class="right"><a class="editfielda" href="'.$_SERVER["PHP_SELF"].'?action=edit&rowid='.$objp->rowid.'">'.img_edit().'</a></td>';
