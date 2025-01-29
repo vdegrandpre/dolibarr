@@ -365,7 +365,10 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 			print '<th class="center">'.$langs->trans("MembersNature").'</th>';
 			$totalarray['nbfield']++;
 		}
-		print '<th class="center">'.$langs->trans("MembershipDuration").'</th>';
+		if (!empty($arrayfields['t.duration']['checked'])) {
+			print '<th class="center">'.$langs->trans("MembershipDuration").'</th>';
+			$totalarray['nbfield']++;
+		}
 		print '<th class="center">'.$langs->trans("SubscriptionRequired").'</th>';
 		print '<th class="center">'.$langs->trans("Amount").'</th>';
 		print '<th class="center">'.$langs->trans("CanEditAmountShort").'</th>';
@@ -437,19 +440,20 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 					}
 					print '</td>';
 				}
-
-				print '<td class="center nowrap">';
-				if ($objp->duration) {
-					$duration_value = intval($objp->duration);
-					if ($duration_value > 1) {
-						$dur = array("i" => $langs->trans("Minutes"), "h" => $langs->trans("Hours"), "d" => $langs->trans("Days"), "w" => $langs->trans("Weeks"), "m" => $langs->trans("Months"), "y" => $langs->trans("Years"));
-					} else {
-						$dur = array("i" => $langs->trans("Minute"), "h" => $langs->trans("Hour"), "d" => $langs->trans("Day"), "w" => $langs->trans("Week"), "m" => $langs->trans("Month"), "y" => $langs->trans("Year"));
+				if (!empty($arrayfields['t.duration']['checked'])) {
+					print '<td class="center nowrap">';
+					if ($objp->duration) {
+						$duration_value = intval($objp->duration);
+						if ($duration_value > 1) {
+							$dur = array("i" => $langs->trans("Minutes"), "h" => $langs->trans("Hours"), "d" => $langs->trans("Days"), "w" => $langs->trans("Weeks"), "m" => $langs->trans("Months"), "y" => $langs->trans("Years"));
+						} else {
+							$dur = array("i" => $langs->trans("Minute"), "h" => $langs->trans("Hour"), "d" => $langs->trans("Day"), "w" => $langs->trans("Week"), "m" => $langs->trans("Month"), "y" => $langs->trans("Year"));
+						}
+						$unit = preg_replace("/[^a-zA-Z]+/", "", $objp->duration);
+						print max(1, $duration_value).' '.$dur[$unit];
 					}
-					$unit = preg_replace("/[^a-zA-Z]+/", "", $objp->duration);
-					print max(1, $duration_value).' '.$dur[$unit];
+					print '</td>';
 				}
-				print '</td>';
 
 				print '<td class="center">'.yn($objp->subscription).'</td>';
 
