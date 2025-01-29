@@ -96,7 +96,16 @@ class ICal
 		$file_text = '';
 
 		//$tmpresult = getURLContent($file, 'GET', '', 1, [], ['http', 'https'], 2, 0);	// To test with any URL
-		$tmpresult = getURLContent($file, 'GET');
+		$localip = 0;
+		$sslverify = -1;
+		if(getDolGlobalString('AGENDA_EXT_CALENDAR_IP_MODE')) {
+			$localip = intval(getDolGlobalString('AGENDA_EXT_CALENDAR_IP_MODE'));
+		}
+		if(getDolGlobalString('AGENDA_EXT_CALENDAR_SSLVERIFY_MODE')) {
+			$sslverify = intval(getDolGlobalString('AGENDA_EXT_CALENDAR_SSLVERIFY_MODE'));
+		}
+		// See documentation of getURLContent function for $localip and $sslverify possible values
+		$tmpresult = getURLContent($file, 'GET', '', 1, [], ['http', 'https'], $localip, $sslverify);
 		if ($tmpresult['http_code'] != 200) {
 			$file_text = null;
 			$this->error = 'Error: '.$tmpresult['http_code'].' '.$tmpresult['content'];
