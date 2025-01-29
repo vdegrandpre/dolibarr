@@ -355,12 +355,15 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 		}
 		if (!empty($arrayfields['t.rowid']['checked'])) {
 			print '<th>'.$langs->trans("Ref").'</th>';
+			$totalarray['nbfield']++;
 		}
 		if (!empty($arrayfields['t.libelle']['checked'])) {
 			print '<th>'.$langs->trans($arrayfields['t.libelle']['label']).'</th>';
+			$totalarray['nbfield']++;
 		}
 		if (!empty($arrayfields['t.morphy']['checked'])) {
 			print '<th class="center">'.$langs->trans("MembersNature").'</th>';
+			$totalarray['nbfield']++;
 		}
 		print '<th class="center">'.$langs->trans("MembershipDuration").'</th>';
 		print '<th class="center">'.$langs->trans("SubscriptionRequired").'</th>';
@@ -423,16 +426,17 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 				if (!empty($arrayfields['t.libelle']['checked'])) {
 					print '<td>'.dol_escape_htmltag($objp->label).'</td>';
 				}
-
-				print '<td class="center">';
-				if ($objp->morphy == 'phy') {
-					print $langs->trans("Physical");
-				} elseif ($objp->morphy == 'mor') {
-					print $langs->trans("Moral");
-				} else {
-					print $langs->trans("MorAndPhy");
+				if (!empty($arrayfields['t.morphy']['checked'])) {
+					print '<td class="center">';
+					if ($objp->morphy == 'phy') {
+						print $langs->trans("Physical");
+					} elseif ($objp->morphy == 'mor') {
+						print $langs->trans("Moral");
+					} else {
+						print $langs->trans("MorAndPhy");
+					}
+					print '</td>';
 				}
-				print '</td>';
 
 				print '<td class="center nowrap">';
 				if ($objp->duration) {
