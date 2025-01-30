@@ -13,7 +13,7 @@
  * Copyright (C) 2016-2022 Ferran Marcet        <fmarcet@2byte.es>
  * Copyright (C) 2021-2025  Frédéric France     <frederic.france@free.fr>
  * Copyright (C) 2022       Gauthier VERDOL     <gauthier.verdol@atm-consulting.fr>
- * Copyright (C) 2024		MDW					<mdeweerd@users.noreply.github.com>
+ * Copyright (C) 2024-2025	MDW					<mdeweerd@users.noreply.github.com>
  * Copyright (C) 2024		William Mead		<william.mead@manchenumerique.fr>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -1703,7 +1703,7 @@ class Commande extends CommonOrder
 			$this->line->fk_commande = $this->id;
 			$this->line->label = $label;
 			$this->line->desc = $desc;
-			$this->line->qty = $qty;
+			$this->line->qty = (float) $qty;
 			$this->line->ref_ext = $ref_ext;
 
 			$this->line->vat_src_code = $vat_src_code;
@@ -1863,21 +1863,21 @@ class Commande extends CommonOrder
 			$this->lines[] = $line;
 
 			/** POUR AJOUTER AUTOMATIQUEMENT LES SOUSPRODUITS a LA COMMANDE
-			 if (getDolGlobalString('PRODUIT_SOUSPRODUITS')) {
-			 $prod = new Product($this->db);
-			 $prod->fetch($idproduct);
-			 $prod -> get_sousproduits_arbo();
-			 $prods_arbo = $prod->get_arbo_each_prod();
-			 if(count($prods_arbo) > 0)
-			 {
-				 foreach($prods_arbo as $key => $value)
-				 {
-					 // print "id : ".$value[1].' :qty: '.$value[0].'<br>';
-					 if not in lines {
-						$this->add_product($value[1], $value[0]);
-					 }
-				 }
-			 }
+			 * if (getDolGlobalString('PRODUIT_SOUSPRODUITS')) {
+			 * $prod = new Product($this->db);
+			 * $prod->fetch($idproduct);
+			 * $prod -> get_sousproduits_arbo();
+			 * $prods_arbo = $prod->get_arbo_each_prod();
+			 * if(count($prods_arbo) > 0)
+			 * {
+			 * foreach($prods_arbo as $key => $value)
+			 * {
+			 * // print "id : ".$value[1].' :qty: '.$value[0].'<br>';
+			 * if not in lines {
+			 * $this->add_product($value[1], $value[0]);
+			 * }
+			 * }
+			 * }
 			 **/
 		}
 	}
