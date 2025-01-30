@@ -1785,10 +1785,9 @@ class Categorie extends CommonObject
 		}
 
 		// Check contrast with background and correct text color
-		//$forced_color = 'categtextwhite'; // TODO This css class hide the link
-		$forced_color = 'categtextblack';
+		$forced_color = 'categtextwhite'; // We want color white because the background is dark (grey or other)
 		if ($this->color) {
-			if (colorIsLight($this->color)) {
+			if (colorIsLight($this->color)) {	// If color is light, we force color to dark
 				$forced_color = 'categtextblack';
 			}
 		}
