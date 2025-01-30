@@ -7450,16 +7450,15 @@ abstract class CommonObject
 	 * Return HTML string to put an input field into a page
 	 * Code very similar with showInputField of extra fields
 	 *
-	 * @param ?array{type:string,label:string,enabled:int<0,2>|string,position:int,notnull?:int,visible:int,noteditable?:int,default?:string,index?:int,foreignkey?:string,searchall?:int,isameasure?:int,css?:string,csslist?:string,help?:string,showoncombobox?:int,disabled?:int,arrayofkeyval?:array<int,string>,comment?:string}	$val	Array of properties for field to show (used only if ->fields not defined)
-	 *                                                                                                                                                                                                                                                                                                                                          Array of properties of field to show
-	 * @param  string  		$key           Key of attribute
-	 * @param  string|string[]	$value         Preselected value to show (for date type it must be in timestamp format, for amount or price it must be a php numeric value, for array type must be array)
-	 * @param  string  		$moreparam     To add more parameters on html input tag
-	 * @param  string  		$keysuffix     Suffix string to add into name and id of field (can be used to avoid duplicate names)
-	 * @param  string  		$keyprefix     Prefix string to add into name and id of field (can be used to avoid duplicate names)
-	 * @param  string|int	$morecss       Value for css to define style/length of field. May also be a numeric.
-	 * @param  int<0,1>		$nonewbutton   Force to not show the new button on field that are links to object
-	 * @return string
+	 * @param 	?array{type:string,label:string,enabled:int<0,2>|string,position:int,notnull?:int,visible:int,noteditable?:int,default?:string,index?:int,foreignkey?:string,searchall?:int,isameasure?:int,css?:string,csslist?:string,help?:string,showoncombobox?:int,disabled?:int,arrayofkeyval?:array<int,string>,comment?:string}	$val	Array of properties for field to show (used only if ->fields not defined, so try to keep this null)
+	 * @param  	string  		$key           Key of attribute
+	 * @param  	string|string[]	$value         Preselected value to show (for date type it must be in timestamp format, for amount or price it must be a php numeric value, for array type must be array)
+	 * @param  	string  		$moreparam     To add more parameters on html input tag
+	 * @param  	string  		$keysuffix     Suffix string to add into name and id of field (can be used to avoid duplicate names)
+	 * @param  	string  		$keyprefix     Prefix string to add into name and id of field (can be used to avoid duplicate names)
+	 * @param  	string|int	$morecss       Value for css to define style/length of field. May also be a numeric.
+	 * @param  	int<0,1>		$nonewbutton   Force to not show the new button on field that are links to object
+	 * @return 	string
 	 */
 	public function showInputField($val, $key, $value, $moreparam = '', $keysuffix = '', $keyprefix = '', $morecss = 0, $nonewbutton = 0)
 	{
@@ -8269,7 +8268,17 @@ abstract class CommonObject
 					}
 				}
 			}
-			$objectfield = $this->element.($this->module ? '@'.$this->module : '').':'.$key.$keysuffix;
+
+			// $param_list_array[0] can be the name of object (Example 'User' the field is linked to). Not as taking the information from the record in ->fields found from $objectfield.
+
+			// $valparent is a string 'dataobject@module:keyoffieldinfieldsarray' to find the record field to link to.
+			// $valparent = $this->element.($this->module ? '@'.$this->module : '').':'.$key.$keysuffix;
+
+			// $val is already the record field found at same place than found by $valparent but already loaded and may have been modified by parent caller.
+
+			//$objectfield = $valparent;
+			$objectfield = $val;			// Is better than using old method $valparent
+
 			$out = $form->selectForForms($param_list_array[0], $keyprefix.$key.$keysuffix, $value, $showempty, '', '', $morecss, $moreparam, 0, (empty($val['disabled']) ? 0 : 1), '', $objectfield);
 
 			if (!empty($param_list_array[2])) {		// If the entry into $fields is set, we must add a create button
