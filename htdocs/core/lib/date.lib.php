@@ -1016,20 +1016,20 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
 /**
  *  Return the list of public holidays including Friday, Saturday and Sunday (or not) between 2 dates in timestamp.
  *  Dates must be UTC with hour, min, sec to 0.
- *  Called by function  num_open_day()
+ *  TODO Not used yet. Must be shared with num_public_holiday()
  *
- * @param int $timestampStart Timestamp start (UTC with hour, min, sec = 0)
- * @param int $timestampEnd Timestamp end (UTC with hour, min, sec = 0)
- * @param string $country_code Country code
- * @param int $lastday Last day is included, 0: no, 1:yes
- * @param int $excludesaturday Exclude saturday as non working day (-1=use setup, 0=no, 1=yes)
- * @param int $excludesunday Exclude sunday as non working day (-1=use setup, 0=no, 1=yes)
- * @param int $excludefriday Exclude friday as non working day (-1=use setup, 0=no, 1=yes)
- * @param int $excludemonday Exclude monday as non working day (-1=use setup, 0=no, 1=yes)
- * @return    string|int[]                        List of public holidays timestamps or error message string if error
- * @see num_between_day(), num_open_day()
+ * @param 	int 		$timestampStart 	Timestamp start (UTC with hour, min, sec = 0)
+ * @param 	int 		$timestampEnd 		Timestamp end (UTC with hour, min, sec = 0)
+ * @param 	string 		$country_code 		Country code
+ * @param 	int 		$lastday 			Last day is included, 0: no, 1:yes
+ * @param 	int 		$excludesaturday 	Exclude saturday as non working day (-1=use setup, 0=no, 1=yes)
+ * @param 	int 		$excludesunday 		Exclude sunday as non working day (-1=use setup, 0=no, 1=yes)
+ * @param 	int 		$excludefriday 		Exclude friday as non working day (-1=use setup, 0=no, 1=yes)
+ * @param 	int 		$excludemonday 		Exclude monday as non working day (-1=use setup, 0=no, 1=yes)
+ * @return	string|int[]                    List of public holidays timestamps or error message string if error
+ * @see num_public_holiday(), num_open_day()
  */
-function list_public_holiday($timestampStart, $timestampEnd, $country_code = '', $lastday = 0, $excludesaturday = -1, $excludesunday = -1, $excludefriday = -1, $excludemonday = -1)
+function listPublicHoliday($timestampStart, $timestampEnd, $country_code = '', $lastday = 0, $excludesaturday = -1, $excludesunday = -1, $excludefriday = -1, $excludemonday = -1)
 {
 	global $conf, $db, $mysoc;
 
