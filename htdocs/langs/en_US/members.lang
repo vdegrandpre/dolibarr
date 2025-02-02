@@ -251,3 +251,5 @@ XSubsriptionErrors=%s subscription(s) where in error
 CreateSubscription=Create subscription
 WarningNoComplementaryActionDone=No Complementary action on recording will be executed with this massaction
 NewMembership=New membership
+Caneditamount=Can edit amount
+Morphy=Moral or physical
